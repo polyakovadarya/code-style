@@ -1,11 +1,11 @@
-.header {
+div {
   background: #f1c40f;
   width: 100%;
   left:0;
   height: 150px;
   position: relative;
 }
-.header > img {
+div > img {
   height: inherit;
   position: relative;
   left:5px;
