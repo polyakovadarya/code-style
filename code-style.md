@@ -1,24 +1,7 @@
 
 <!-- # code-style ![js](img/js.svg) -->
 <img src="img/js.svg" alt="js" width="150px"/>
-<style>
-.markdown-body {
-  background-color: 'yellow';
-  color:'red';
-  
-}
-li {
-  margin:0 -10px;
-  background-color: 'yellow';
-  color:green;
-}
-ul {
-  font-size: 14px;
-  background: 'black';
-  color: 'blue';
-  font-weight: bold;
-}
-</style>
+
 Авторы: [Георгий Грошев](https://github.com/eclegend), [Илья Назаров](https://github.com/ilich-x)
 
 # Содержание
