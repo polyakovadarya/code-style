@@ -1,6 +1,6 @@
 
 <!-- # code-style ![js](img/js.svg) -->
-<img src="img/js.svg" alt="js" style="height: 100px;"/>
+<img src="img/js.svg" alt="js" width="150px"/>
 
 Авторы: [ECLEGEND](https://github.com/eclegend)
 
