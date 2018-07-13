@@ -46,30 +46,129 @@
 Пробелы не ствятся:
 
 - между названием функции и скобкой;
-- между двумя скобками (одного или разных видов);
-- между ключом и двоеточием;
+```javascript
+// плохо
+function foo () {};
+// хорошо
+function foo() {};
+```
+-  между круглыми скобками и их содержимым;
+```javascript
+// плохо
+function foo( a ) {
+  console.log( 'Hello', a )
+};
+// хорошо
+function foo(a) {
+  console.log('Hello', a)
+};
+```
+- между квадратными скобками и их содержимым
+```javascript
+// плохо
+const foo = [ 1, 2, 3 ];
+console.log(foo[ 0 ]);
 
+// хорошо
+const foo = [1, 2, 3];
+console.log(foo[0]);
+```
+- между ключом и двоеточием;
+```javascript
+// плохо
+this.var = {
+  number : 10, 
+}
+// хорошо
+this.var = {
+  number: 10, 
+}
+```
 Пробелы ставятся:
 
-- между логическими, математическими операторами и их операндами;
-- после запятой;
-- перед и после равенства (оператор присвоения);
-- после двоеточия;
-- перед и после стрелки в стрелочной функции;
-- после открывающей и перед закрывающей скобкой, если объект записан в одну строчку;
+- между логическими, математическими операторами и их операндами,перед и после равенства (оператор присвоения);
+```javascript
+// плохо
+const x=y+5;
 
+// хорошо
+const x = y + 5;
+```
+- между фигурными скобками и их содержимым, а также после открывающей и перед закрывающей скобкой, если объект записан в одну строчку
+```javascript
+// плохо
+const foo = {clark: 'kent'};
+
+// хорошо
+const foo = { clark: 'kent' };
+```
+- после запятой;
+```javascript
+// плохо
+const foo = { clark: 'kent',devid: 'selbi' };
+// хорошо
+const foo = { clark: 'kent', devid: 'selbi' };
+```
+
+- после двоеточия;
+```javascript
+// плохо
+this.var = {
+  number:10, 
+}
+// хорошо
+this.var = {
+  number: 10, 
+}
+```
+- перед и после стрелки в стрелочной функции;
+```javascript
+// хорошо
+this.arr = [1, 2, 3].map((x) => {
+  const y = x + 1;
+  return x * y;
+});
+
+// хорошо
+this.arr = [1, 2, 3].map(x => x + 1);
+```
 Отсутпы: **2 пробела**.
 
 Если есть цепочка вызовов, где каждый метод вызывается с новой строки, то эти методы должны быть на одном уровне, на следующем от объекта.
 
+Используйте переносы строк и отступы, когда делаете длинные цепочки методов (больше 2-х методов). Ставьте точку в начале строки, чтобы дать понять, что это не новая инструкция, а продолжение цепочки
+
+```javascript
+// плохо
+$('#items').find('.selected').highlight().end().find('.open').updateCount();
+
+// хорошо
+$('#items')
+⋅⋅.find('.selected')
+⋅⋅⋅⋅.highlight()
+⋅⋅⋅⋅.end()
+⋅⋅.find('.open')
+⋅⋅⋅⋅.updateCount();
+
+```
+
 Переносы не ставятся:
 
 - перед скобкой (если только перед ней не идет другая скобка того же вида);
+```javascript
+this.arr = [1, 2, 3].map(x => x * x);
+```
 
 Переносы ставятся:
 
 - после скобок (скобка остается), если далее идет большой кусок кода;
 - после стрелки в стрелочной функции (как блок инструкций);
+```javascript
+const itemHeight = (item) => {
+  const { height, largeSize, smallSize } = item;
+  return height > 256 ? largeSize : smallSize;
+};
+```
 ### 1.2. Стиль регистра: CamelCase
 
 Cейчас у нас много где встречается регистр [Snake_case](https://ru.wikipedia.org/wiki/Snake_case), это пришло к нам от Ruby-стов вместе с CoffeeScript-ом.
@@ -82,10 +181,10 @@ Cейчас у нас много где встречается регистр [S
 
 ```javascript
 // Хорошо
-$$.Script.prototype.initDragger = () => {...};
+$$.Script.prototype.initDragger = function() => {...};
 
 // Не очень хорошо
-$$.Script.prototype.init_dragger = () => {...};
+$$.Script.prototype.init_dragger = function() => {...};
 
 ```
 
@@ -166,7 +265,9 @@ const errorMessage = 'This is a super long error that was thrown because ' +
   'with this, you would get nowhere fast.';
 
 // хорошо
-const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
+const errorMessage = `This is a super long error that was thrown because 
+  of Batman. When you stop to think about how Batman had anything to do
+  with this, you would get nowhere fast.`;
 ```
 При создании строки программным путем используйте шаблонные строки вместо конкатенации.
 
@@ -237,10 +338,10 @@ Map
 ```javascript
 // при такой записи можно не писать "return"
 this.dom = {
-  coloredBlocks: _.range(5).map(i=> $.div(`colored-block block-${i}`)
+  coloredBlocks: _.range(5).map(i => $.div(`colored-block block-${i}`)
 }
 // return
-this.dom.plates = _.range(5).map(i=>{
+this.dom.plates = _.range(5).map(i => {
   let plate = $.div(`plate plate-${i}`).html('text');
   plate.appendTo(this.dom.scene).css({
     position:'absolute',
