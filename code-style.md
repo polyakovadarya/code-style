@@ -1,7 +1,6 @@
 
 <!-- # code-style ![js](img/js.svg) -->
-<link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
-<div style="width:100%;height:90px;background-color:#f1c40f;left:0;"><img src="img/js.svg" alt="js" width="150px" align='left'/></div>
+<img src="img/js.svg" alt="js" width="150px"/>
 
 Авторы: [Георгий Грошев](https://github.com/eclegend), [Илья Назаров](https://github.com/ilich-x)
 
