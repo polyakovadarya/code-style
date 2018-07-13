@@ -1,12 +1,4 @@
----
-title: "Title"
-author: "Author"
-date: "DATE"
-output:
-  html_document:
-    css: fontawesome/css/fontawesome.css
-    self_contained: false
----
+
 # code-style 
 
 Авторы: [1,2](#ref).
