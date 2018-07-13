@@ -1,5 +1,5 @@
 
-# code-style 
+# [code-style](https://github.com/eclegend/code-style/img/js.svg)
 
 Авторы: [1,2](#ref).
 
