@@ -1,7 +1,8 @@
 
-# [code-style](https://github.com/eclegend/code-style/img/js.svg)
+<!-- # code-style ![js](img/js.svg) -->
+<img src="img/js.svg" alt="js" style="height: 100px; width:100%; background:#f1c40f; position:relative;"/>
 
-Авторы: [1,2](#ref).
+Авторы: [ECLEGEND](https://github.com/eclegend)
 
 # Содержание
 - [Предисловие](#Предисловие)
