@@ -125,18 +125,11 @@ module.exports = {
     'guard-for-in': 'error',
 
     // disallow the use of alert, confirm, and prompt
-    'no-alert': 'warn',
-
-    // disallow use of arguments.caller or arguments.callee
-    'no-caller': 'error',
+    'no-alert': 'error',
 
     // disallow lexical declarations in case/default clauses
     // http://eslint.org/docs/rules/no-case-declarations.html
     'no-case-declarations': 'error',
-
-    // disallow division operators explicitly at beginning of regular expression
-    // http://eslint.org/docs/rules/no-div-regex
-    'no-div-regex': 'off',
 
     // disallow else after a return in an if
     // https://eslint.org/docs/rules/no-else-return
