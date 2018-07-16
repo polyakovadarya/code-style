@@ -49,3 +49,29 @@
       return `${firstName} ${lastName}`;
     }
     ```
+
+
+    <a name="destructuring--object-over-array"></a><a name="5.3"></a>
+Используйте деструктуризацию объекта для множества возвращаемых значений, но не делайте тоже самое с массивами.
+
+    > Почему? Вы cможете добавить новые свойства через некоторое время или изменить порядок без последствий.
+
+    ```javascript
+    // плохо
+    function processInput(input) {
+      // затем происходит чудо
+      return [left, right, top, bottom];
+    }
+
+    // при вызове нужно подумать о порядке возвращаемых данных
+    const [left, __, top] = processInput(input);
+
+    // хорошо
+    function processInput(input) {
+      // затем происходит чудо
+      return { left, right, top, bottom };
+    }
+
+    // при вызове выбираем только необходимые данные
+    const { left, top } = processInput(input);
+    ```
