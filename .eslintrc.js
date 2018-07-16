@@ -200,7 +200,7 @@ module.exports = {
     'no-lone-blocks': 'error',
 
     // disallow creation of functions within loops
-    'no-loop-func': 'error',
+    'no-loop-func': 'warn',
 
     // disallow magic numbers
     // http://eslint.org/docs/rules/no-magic-numbers
@@ -241,23 +241,6 @@ module.exports = {
     // var foo = 'Copyright \251';
     'no-octal-escape': 'error',
 
-    // disallow reassignment of function parameters
-    // disallow parameter object manipulation except for specific exclusions
-    // rule: http://eslint.org/docs/rules/no-param-reassign.html
-    // 'no-param-reassign': ['error', {
-    //   props: true,
-    //   ignorePropertyModificationsFor: [
-    //     'acc', // for reduce accumulators
-    //     'e', // for e.returnvalue
-    //     'ctx', // for Koa routing
-    //     'req', // for Express requests
-    //     'request', // for Express requests
-    //     'res', // for Express responses
-    //     'response', // for Express responses
-    //     '$scope', // for Angular 1 scopes
-    //   ]
-    // }],
-
     // disallow usage of __proto__ property
     'no-proto': 'error',
 
@@ -267,7 +250,7 @@ module.exports = {
     // disallow certain object properties
     // http://eslint.org/docs/rules/no-restricted-properties
     'no-restricted-properties': [
-      'error',
+      'warn',
       {
         object: 'arguments',
         property: 'callee',
@@ -364,10 +347,6 @@ module.exports = {
     // http://eslint.org/docs/rules/no-useless-return
     'no-useless-return': 'error',
 
-    // disallow use of void operator
-    // http://eslint.org/docs/rules/no-void
-    'no-void': 'error',
-
     // disallow usage of configurable warning terms in comments: e.g. todo
     'no-warning-comments': ['off', { terms: ['todo', 'fixme', 'xxx'], location: 'start' }],
 
@@ -381,16 +360,12 @@ module.exports = {
     // require use of the second argument for parseInt()
     radix: 'error',
 
-    // require `await` in `async function` (note: this is a horrible rule that should never be used)
-    // http://eslint.org/docs/rules/require-await
-    'require-await': 'off',
-
     // requires to declare all vars on top of their containing scope
     'vars-on-top': 'error',
 
     // require immediate function invocation to be wrapped in parentheses
     // http://eslint.org/docs/rules/wrap-iife.html
-    'wrap-iife': ['error', 'inside', { functionPrototypeMethods: false }],
+    'wrap-iife': ['warn', 'inside', { functionPrototypeMethods: false }],
 
     // require or disallow Yoda conditions
     yoda: 'error',
@@ -534,55 +509,20 @@ module.exports = {
       },
     ],
 
-    // require parens in arrow function arguments
-    // http://eslint.org/docs/rules/arrow-parens
-    // 'arrow-parens': ['error', 'as-needed', {
-    //   requireForBlockBody: true,
-    // }],
-
     // require space before/after arrow function's arrow
     // http://eslint.org/docs/rules/arrow-spacing
     'arrow-spacing': ['error', { before: true, after: true }],
-
-    // verify super() callings in constructors
-    'constructor-super': 'error',
-
-    // enforce the spacing around the * in generator functions
-    // http://eslint.org/docs/rules/generator-star-spacing
-    'generator-star-spacing': ['error', { before: false, after: true }],
 
     // disallow modifying variables of class declarations
     // http://eslint.org/docs/rules/no-class-assign
     'no-class-assign': 'error',
 
-    // disallow arrow functions where they could be confused with comparisons
-    // http://eslint.org/docs/rules/no-confusing-arrow
-    'no-confusing-arrow': [
-      'error',
-      {
-        allowParens: true,
-      },
-    ],
-
     // disallow modifying variables that are declared using const
     'no-const-assign': 'error',
-
-    // disallow duplicate class members
-    // http://eslint.org/docs/rules/no-dupe-class-members
-    'no-dupe-class-members': 'error',
-
-    // disallow importing from the same path more than once
-    // http://eslint.org/docs/rules/no-duplicate-imports
-    // replaced by https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md
-    'no-duplicate-imports': 'off',
 
     // disallow symbol constructor
     // http://eslint.org/docs/rules/no-new-symbol
     'no-new-symbol': 'error',
-
-    // disallow specific imports
-    // http://eslint.org/docs/rules/no-restricted-imports
-    'no-restricted-imports': 'off',
 
     // disallow to use this/super before super() calling in constructors.
     // http://eslint.org/docs/rules/no-this-before-super
@@ -591,10 +531,6 @@ module.exports = {
     // disallow useless computed property keys
     // http://eslint.org/docs/rules/no-useless-computed-key
     'no-useless-computed-key': 'error',
-
-    // disallow unnecessary constructor
-    // http://eslint.org/docs/rules/no-useless-constructor
-    'no-useless-constructor': 'error',
 
     // disallow renaming import, export, and destructured assignments to the same name
     // http://eslint.org/docs/rules/no-useless-rename
@@ -662,11 +598,11 @@ module.exports = {
 
     // use rest parameters instead of arguments
     // http://eslint.org/docs/rules/prefer-rest-params
-    'prefer-rest-params': 'error',
+    'prefer-rest-params': 'warn',
 
     // suggest using the spread operator instead of .apply()
     // http://eslint.org/docs/rules/prefer-spread
-    'prefer-spread': 'error',
+    'prefer-spread': 'warn',
 
     // suggest using template literals instead of string concatenation
     // http://eslint.org/docs/rules/prefer-template
@@ -679,17 +615,6 @@ module.exports = {
     // enforce spacing between object rest-spread
     // http://eslint.org/docs/rules/rest-spread-spacing
     'rest-spread-spacing': ['error', 'never'],
-
-    // import sorting
-    // http://eslint.org/docs/rules/sort-imports
-    'sort-imports': [
-      'off',
-      {
-        ignoreCase: false,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-      },
-    ],
 
     // require a Symbol description
     // http://eslint.org/docs/rules/symbol-description
@@ -717,27 +642,12 @@ module.exports = {
     // http://eslint.org/docs/rules/no-buffer-constructor
     'no-buffer-constructor': 'error',
 
-    // disallow mixing regular variable and require declarations
-    'no-mixed-requires': ['off', false],
-
     // disallow use of new operator with the require function
     'no-new-require': 'error',
 
     // disallow string concatenation with __dirname and __filename
     // http://eslint.org/docs/rules/no-path-concat
     'no-path-concat': 'error',
-
-    // disallow use of process.env
-    'no-process-env': 'off',
-
-    // disallow process.exit()
-    'no-process-exit': 'off',
-
-    // restrict usage of specified node modules
-    'no-restricted-modules': 'off',
-
-    // disallow use of synchronous methods (off by default)
-    'no-sync': 'off',
 
     // enforce line breaks after opening and before closing array brackets
     // http://eslint.org/docs/rules/array-bracket-newline
@@ -825,21 +735,7 @@ module.exports = {
 
     // require function expressions to have a name
     // http://eslint.org/docs/rules/func-names
-    //TODO: only Uchi.ru
     'func-names': ['warn', 'never'],
-
-    // enforces use of function declarations or expressions
-    // http://eslint.org/docs/rules/func-style
-    // TODO: enable
-    'func-style': ['off', 'expression'],
-
-    // enforce consistent line breaks inside function parentheses
-    // https://eslint.org/docs/rules/function-paren-newline
-    // 'function-paren-newline': ['error', 'consistent'],
-
-    // Blacklist certain identifiers to prevent them being used
-    // http://eslint.org/docs/rules/id-blacklist
-    'id-blacklist': 'off',
 
     // this option enforces minimum and maximum identifier lengths
     // (variable names, property names etc.)
@@ -956,9 +852,6 @@ module.exports = {
 
     // specify the maximum depth callbacks can be nested
     'max-nested-callbacks': 'off',
-
-    // limits the number of parameters that can be used in the function declaration.
-    'max-params': ['off', 3],
 
     // specify the maximum number of statement allowed in a function
     'max-statements': ['off', 10],
@@ -1182,9 +1075,6 @@ module.exports = {
     // requires object keys to be sorted
     'sort-keys': ['off', 'asc', { caseSensitive: false, natural: true }],
 
-    // sort variables within the same declaration block
-    'sort-vars': 'off',
-
     // require or disallow space before blocks
     'space-before-blocks': 'error',
 
@@ -1241,19 +1131,6 @@ module.exports = {
     // Require or disallow spacing between template tags and their literals
     // http://eslint.org/docs/rules/template-tag-spacing
     'template-tag-spacing': ['error', 'never'],
-
-    // require or disallow the Unicode Byte Order Mark
-    // http://eslint.org/docs/rules/unicode-bom
-    'unicode-bom': ['error', 'never'],
-
-    // require regex literals to be wrapped in parentheses
-    'wrap-regex': 'off',
-
-    // enforce or disallow variable initializations at definition
-    'init-declarations': 'off',
-
-    // disallow the catch clause parameter name being the same as a variable in the outer scope
-    'no-catch-shadow': 'off',
 
     // disallow deletion of variables
     'no-delete-var': 'error',
