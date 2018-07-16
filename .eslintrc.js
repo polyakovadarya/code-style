@@ -136,7 +136,6 @@ module.exports = {
     // TODO: semver-major, set allowElseIf to false
     'no-else-return': ['error', { allowElseIf: true }],
 
-
     // disallow empty destructuring patterns
     // http://eslint.org/docs/rules/no-empty-pattern
     'no-empty-pattern': 'error',
@@ -345,12 +344,6 @@ module.exports = {
     // http://eslint.org/docs/rules/no-unmodified-loop-condition
     'no-unmodified-loop-condition': 'off',
 
-    // disallow usage of expressions in statement position
-    // 'no-unused-expressions': ['error', {
-    //   allowShortCircuit: false,
-    //   allowTernary: false,
-    //   allowTaggedTemplates: false,
-    // }],
 
     // disallow unused labels
     // http://eslint.org/docs/rules/no-unused-labels
@@ -649,16 +642,10 @@ module.exports = {
     // Prefer destructuring from arrays and objects
     // http://eslint.org/docs/rules/prefer-destructuring
     'prefer-destructuring': [
-      'error',
+      'warn',
       {
-        VariableDeclarator: {
-          array: false,
-          object: true,
-        },
-        AssignmentExpression: {
-          array: true,
-          object: true,
-        },
+        "array": fasle,
+        "object": true
       },
       {
         enforceForRenamedProperties: false,
@@ -856,10 +843,7 @@ module.exports = {
 
     // this option enforces minimum and maximum identifier lengths
     // (variable names, property names etc.)
-    'id-length': 'off',
-
-    // require identifiers to match the provided regular expression
-    'id-match': 'off',
+    'id-length': '["error", { "min": 3 }]',
 
     // this option sets a specific tab width for your code
     // http://eslint.org/docs/rules/indent
@@ -889,10 +873,6 @@ module.exports = {
         ignoredNodes: ['JSXElement', 'JSXElement *'],
       },
     ],
-
-    // specify whether double or single quotes should be used in JSX attributes
-    // http://eslint.org/docs/rules/jsx-quotes
-    'jsx-quotes': ['off', 'prefer-double'],
 
     // enforces spacing between keys and values in object literal properties
     'key-spacing': ['error', { beforeColon: false, afterColon: true }],
@@ -995,17 +975,6 @@ module.exports = {
     // http://eslint.org/docs/rules/multiline-ternary
     // TODO: enable?
     'multiline-ternary': ['off', 'never'],
-
-    // require a capital letter for constructors
-    'new-cap': [
-      'error',
-      {
-        newIsCap: true,
-        newIsCapExceptions: [],
-        capIsNew: false,
-        capIsNewExceptions: ['Immutable.Map', 'Immutable.Set', 'Immutable.List'],
-      },
-    ],
 
     // disallow the omission of parentheses when invoking a constructor with no arguments
     // http://eslint.org/docs/rules/new-parens
@@ -1310,8 +1279,7 @@ module.exports = {
 
     // disallow use of undefined variable
     // http://eslint.org/docs/rules/no-undefined
-    // TODO: enable?
-    'no-undefined': 'off',
+    'no-undefined': 'warn',
 
     // disallow declaration of variables that are not used in the code
     'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: true }],
