@@ -668,7 +668,38 @@ count();  // 2
 count(3); // 3
 count();  // 3
 ```
+Функции с многострочным определением или запуском должны содержать такие же отступы, как и другие многострочные списки в этом руководстве: с каждым элементом на отдельной строке, с запятой в конце элемента. 
+>eslint: [`function-paren-newline`](https://eslint.org/docs/rules/function-paren-newline)
 
+```javascript
+// плохо
+function foo(bar,
+            baz,
+            quux) {
+  // ...
+}
+
+// хорошо
+function foo(
+  bar,
+  baz,
+  quux,
+) {
+  // ...
+}
+
+// плохо
+console.log(foo,
+  bar,
+  baz);
+
+// хорошо
+console.log(
+  foo,
+  bar,
+  baz,
+);
+```
 [<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
 
 # Инкременты и декременты
@@ -757,6 +788,8 @@ if (collection.length > 0) {
 
 > Тернарные операторы не должны быть вложены и в большинстве случаев должны быть расположены на одной строке
 
+>eslint: [`no-nested-ternary`](https://eslint.org/docs/rules/no-nested-ternary.html)
+
 ```javascript
 // плохо
 const foo = maybe1 > maybe2 ? 'bar' : value1 > value2 ? 'baz' : null;
@@ -772,6 +805,8 @@ const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
 
 > Избегайте ненужных тернарных операторов
 
+>eslint: [`no-unneeded-ternary`](https://eslint.org/docs/rules/no-unneeded-ternary.html)
+
 ```javascript
 // плохо
 const foo = a ? a : b;
@@ -784,7 +819,11 @@ const bar = !!c;
 const baz = !c;
 ```
 
-> При смешивании операторов, помещайте их в круглые скобки. Единственное исключение — это стандартные арифметические операторы (`+, -, *` и `/`), так как их приоритет широко известен.
+При смешивании операторов, помещайте их в круглые скобки. Единственное исключение — это стандартные арифметические операторы (`+, -, *` и `/`), так как их приоритет широко известен.
+
+>Почему? Это улучшает читаемость и уточняет намерения разработчика.
+
+>eslint: [`no-mixed-operators`](https://eslint.org/docs/rules/no-mixed-operators.html)
 
 ```javascript
 // плохо
@@ -811,6 +850,55 @@ if (a || (b && c)) {
 }
 // хорошо
 const bar = a + (b / c) * d;
+```
+
+Используйте фигурные скобки для `case` и `default`, если они содержат лексические декларации (например, `let`, `const`, `function`, и `class`). 
+
+
+> Почему? Лексические декларации видны во всем `switch` блоке, но инициализируются только при присваиваниикоторое происходит при входе в блок `case`. Возникают проблемы, когда множество `case` пытаются определить одно то же
+
+>eslint: [`no-case-declarations`](https://eslint.org/docs/rules/no-case-declarations.html).
+```javascript
+// плохо
+switch (foo) {
+  case 1:
+    let x = 1;
+    break;
+  case 2:
+    const y = 2;
+    break;
+  case 3:
+    function f() {
+      // ...
+    }
+    break;
+  default:
+    class C {}
+}
+
+// хорошо
+switch (foo) {
+  case 1: {
+    let x = 1;
+    break;
+  }
+  case 2: {
+    const y = 2;
+    break;
+  }
+  case 3: {
+    function f() {
+      // ...
+    }
+    break;
+  }
+  case 4:
+    bar();
+    break;
+  default: {
+    class C {}
+  }
+}
 ```
 
 [<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)

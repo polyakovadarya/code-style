@@ -75,3 +75,24 @@
     // при вызове выбираем только необходимые данные
     const { left, top } = processInput(input);
     ```
+
+<a name="functions--spread-vs-apply"></a><a name="7.14"></a>
+  - [7.14](#functions--spread-vs-apply) Отдавайте предпочтение использованию оператора расширения `...` при вызове вариативной функции. eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
+
+    > Почему? Это чище, вам не нужно предоставлять контекст, и не так просто составить `new` с `apply`.
+
+    ```javascript
+    // плохо
+    const x = [1, 2, 3, 4, 5];
+    console.log.apply(console, x);
+
+    // хорошо
+    const x = [1, 2, 3, 4, 5];
+    console.log(...x);
+
+    // плохо
+    new (Function.prototype.bind.apply(Date, [null, 2016, 8, 5]));
+
+    // хорошо
+    new Date(...[2016, 8, 5]);
+    ```
