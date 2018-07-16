@@ -122,7 +122,7 @@ module.exports = {
     eqeqeq: ['error', 'always', { null: 'ignore' }],
 
     // make sure for-in loops have an if statement
-    'guard-for-in': 'error',
+    'guard-for-in': 'warn',
 
     // disallow the use of alert, confirm, and prompt
     'no-alert': 'error',
@@ -133,7 +133,7 @@ module.exports = {
 
     // disallow else after a return in an if
     // https://eslint.org/docs/rules/no-else-return
-    // TODO: semver-major, set allowElseIf to false
+    // TODO:
     'no-else-return': ['error', { allowElseIf: true }],
 
     // disallow empty destructuring patterns
@@ -141,7 +141,7 @@ module.exports = {
     'no-empty-pattern': 'error',
 
     // disallow comparisons to null without a type-checking operator
-    'no-eq-null': 'off',
+    'no-eq-null': 'warn',
 
     // disallow use of eval()
     'no-eval': 'error',
@@ -165,30 +165,21 @@ module.exports = {
     // disallow reassignments of native objects or read-only globals
     // http://eslint.org/docs/rules/no-global-assign
     'no-global-assign': ['error', { exceptions: [] }],
-    // deprecated in favor of no-global-assign
-    'no-native-reassign': 'off',
 
     // disallow implicit type conversions
     // http://eslint.org/docs/rules/no-implicit-coercion
     'no-implicit-coercion': [
-      'off',
+      'warn',
       {
         boolean: false,
         number: true,
         string: true,
-        allow: [],
+        allow: ['!!', '+'],
       },
     ],
 
-    // disallow var and named functions in global scope
-    // http://eslint.org/docs/rules/no-implicit-globals
-    'no-implicit-globals': 'off',
-
     // disallow use of eval()-like methods
     'no-implied-eval': 'error',
-
-    // disallow this keywords outside of classes or class-like objects
-    'no-invalid-this': 'off',
 
     // disallow usage of __iterator__ property
     'no-iterator': 'error',
@@ -205,9 +196,9 @@ module.exports = {
     // disallow magic numbers
     // http://eslint.org/docs/rules/no-magic-numbers
     'no-magic-numbers': [
-      'off',
+      'warn',
       {
-        ignore: [],
+        ignore: [2],
         ignoreArrayIndexes: true,
         enforceConst: true,
         detectObjects: false,
@@ -236,10 +227,6 @@ module.exports = {
 
     // disallow use of (old style) octal literals
     'no-octal': 'error',
-
-    // disallow use of octal escape sequences in string literals, such as
-    // var foo = 'Copyright \251';
-    'no-octal-escape': 'error',
 
     // disallow usage of __proto__ property
     'no-proto': 'error',
@@ -301,14 +288,8 @@ module.exports = {
       },
     ],
 
-    // disallow use of assignment in return statement
-    // 'no-return-assign': ['error', 'always'],
-
     // disallow redundant `return await`
-    'no-return-await': 'error',
-
-    // disallow use of `javascript:` urls.
-    'no-script-url': 'error',
+    'no-return-await': 'warn',
 
     // disallow self assignment
     // http://eslint.org/docs/rules/no-self-assign
@@ -323,17 +304,10 @@ module.exports = {
     // restrict what can be thrown as an exception
     'no-throw-literal': 'error',
 
-    // disallow unmodified conditions of loops
-    // http://eslint.org/docs/rules/no-unmodified-loop-condition
-    'no-unmodified-loop-condition': 'off',
-
 
     // disallow unused labels
     // http://eslint.org/docs/rules/no-unused-labels
     'no-unused-labels': 'error',
-
-    // disallow unnecessary .call() and .apply()
-    'no-useless-call': 'off',
 
     // disallow useless string concatenation
     // http://eslint.org/docs/rules/no-useless-concat
@@ -346,9 +320,6 @@ module.exports = {
     // disallow redundant return; keywords
     // http://eslint.org/docs/rules/no-useless-return
     'no-useless-return': 'error',
-
-    // disallow usage of configurable warning terms in comments: e.g. todo
-    'no-warning-comments': ['off', { terms: ['todo', 'fixme', 'xxx'], location: 'start' }],
 
     // disallow use of the with statement
     'no-with': 'error',
@@ -373,10 +344,6 @@ module.exports = {
     // Enforce “for” loop update clause moving the counter in the right direction
     // http://eslint.org/docs/rules/for-direction
     'for-direction': 'error',
-
-    // Enforces that a return statement is present in property getters
-    // http://eslint.org/docs/rules/getter-return
-    'getter-return': ['error', { allowImplicit: true }],
 
     // Disallow await inside of loops
     // http://eslint.org/docs/rules/no-await-in-loop
@@ -425,8 +392,9 @@ module.exports = {
 
     // disallow unnecessary parentheses
     // http://eslint.org/docs/rules/no-extra-parens
+    //FIXME: нужно?
     'no-extra-parens': [
-      'off',
+      'warn',
       'all',
       {
         conditionalAssign: true,
@@ -483,16 +451,9 @@ module.exports = {
     // disallow negating the left operand of relational operators
     // http://eslint.org/docs/rules/no-unsafe-negation
     'no-unsafe-negation': 'error',
-    // disallow negation of the left operand of an in expression
-    // deprecated in favor of no-unsafe-negation
-    'no-negated-in-lhs': 'off',
 
     // disallow comparisons with the value NaN
     'use-isnan': 'error',
-
-    // ensure JSDoc comments are valid
-    // http://eslint.org/docs/rules/valid-jsdoc
-    'valid-jsdoc': 'off',
 
     // ensure that the results of typeof are compared against a valid string
     // http://eslint.org/docs/rules/valid-typeof
@@ -592,10 +553,6 @@ module.exports = {
     // http://eslint.org/docs/rules/prefer-numeric-literals
     'prefer-numeric-literals': 'error',
 
-    // suggest using Reflect methods where applicable
-    // http://eslint.org/docs/rules/prefer-reflect
-    'prefer-reflect': 'off',
-
     // use rest parameters instead of arguments
     // http://eslint.org/docs/rules/prefer-rest-params
     'prefer-rest-params': 'warn',
@@ -624,19 +581,9 @@ module.exports = {
     // http://eslint.org/docs/rules/template-curly-spacing
     'template-curly-spacing': 'error',
 
-    // enforce spacing around the * in yield* expressions
-    // http://eslint.org/docs/rules/yield-star-spacing
-    'yield-star-spacing': ['error', 'after'],
-
-    // enforce return after a callback
-    'callback-return': 'off',
-
     // require all requires be top-level
     // http://eslint.org/docs/rules/global-require
     'global-require': 'error',
-
-    // enforces error handling in callbacks (node environment)
-    'handle-callback-err': 'off',
 
     // disallow use of the Buffer() constructor
     // http://eslint.org/docs/rules/no-buffer-constructor
@@ -648,16 +595,6 @@ module.exports = {
     // disallow string concatenation with __dirname and __filename
     // http://eslint.org/docs/rules/no-path-concat
     'no-path-concat': 'error',
-
-    // enforce line breaks after opening and before closing array brackets
-    // http://eslint.org/docs/rules/array-bracket-newline
-    // TODO: enable? semver-major
-    'array-bracket-newline': ['off', 'consistent'], // object option alternative: { multiline: true, minItems: 3 }
-
-    // enforce line breaks between array elements
-    // http://eslint.org/docs/rules/array-element-newline
-    // TODO: enable? semver-major
-    'array-element-newline': ['off', { multiline: true, minItems: 3 }],
 
     // enforce spacing inside array brackets
     'array-bracket-spacing': ['error', 'never'],
@@ -672,30 +609,12 @@ module.exports = {
     // require camel case names
     camelcase: ['error', { properties: 'never' }],
 
-    // enforce or disallow capitalization of the first letter of a comment
-    // http://eslint.org/docs/rules/capitalized-comments
-    'capitalized-comments': [
-      'off',
-      'never',
-      {
-        line: {
-          ignorePattern: '.*',
-          ignoreInlineComments: true,
-          ignoreConsecutiveComments: true,
-        },
-        block: {
-          ignorePattern: '.*',
-          ignoreInlineComments: true,
-          ignoreConsecutiveComments: true,
-        },
-      },
-    ],
-
     // require trailing commas in multiline object literals
+    // FIXME: warn?
     'comma-dangle': [
-      'off',
+      'warn',
       {
-        arrays: 'always-multiline',
+        arrays: 'never',
         objects: 'always-multiline',
         imports: 'always-multiline',
         exports: 'always-multiline',
@@ -712,26 +631,12 @@ module.exports = {
     // disallow padding inside computed properties
     'computed-property-spacing': ['error', 'never'],
 
-    // enforces consistent naming when capturing the current execution context
-    'consistent-this': 'off',
-
     // enforce newline at the end of file, with no multiple empty lines
     'eol-last': ['error', 'always'],
 
     // enforce spacing between functions and their invocations
     // http://eslint.org/docs/rules/func-call-spacing
     'func-call-spacing': ['error', 'never'],
-
-    // requires function names to match the name of the variable or property to which they are
-    // assigned
-    // http://eslint.org/docs/rules/func-name-matching
-    'func-name-matching': [
-      'off',
-      'always',
-      {
-        includeCommonJSModuleExports: false,
-      },
-    ],
 
     // require function expressions to have a name
     // http://eslint.org/docs/rules/func-names
@@ -787,29 +692,16 @@ module.exports = {
       },
     ],
 
-    // enforce position of line comments
-    // http://eslint.org/docs/rules/line-comment-position
-    // TODO: enable?
-    'line-comment-position': [
-      'off',
-      {
-        position: 'above',
-        ignorePattern: '',
-        applyDefaultPatterns: true,
-      },
-    ],
-
     // disallow mixed 'LF' and 'CRLF' as linebreaks
     // http://eslint.org/docs/rules/linebreak-style
     'linebreak-style': ['error', 'unix'],
 
-    // require or disallow an empty line between class members
-    // https://eslint.org/docs/rules/lines-between-class-members
-    // TODO: semver-major: enable
-    'lines-between-class-members': ['off', 'always', { exceptAfterSingleLine: false }],
-
     // enforces empty lines around comments
-    'lines-around-comment': 'off',
+    'lines-around-comment': ["warn", {
+      "beforeBlockComment": true,
+      "allowObjectStart": true,
+      "allowBlockStart": true 
+    }],
 
     // require or disallow newlines around directives
     // http://eslint.org/docs/rules/lines-around-directive
@@ -822,7 +714,7 @@ module.exports = {
     ],
 
     // specify the maximum depth that blocks can be nested
-    'max-depth': ['off', 4],
+    'max-depth': ['warn', 4],
 
     // specify the maximum length of a line in your program
     // http://eslint.org/docs/rules/max-len
@@ -839,45 +731,14 @@ module.exports = {
       },
     ],
 
-    // specify the max number of lines in a file
-    // http://eslint.org/docs/rules/max-lines
-    'max-lines': [
-      'off',
-      {
-        max: 300,
-        skipBlankLines: true,
-        skipComments: true,
-      },
-    ],
-
-    // specify the maximum depth callbacks can be nested
-    'max-nested-callbacks': 'off',
-
-    // specify the maximum number of statement allowed in a function
-    'max-statements': ['off', 10],
-
-    // restrict the number of statements per line
-    // http://eslint.org/docs/rules/max-statements-per-line
-    'max-statements-per-line': ['off', { max: 1 }],
-
-    // enforce a particular style for multiline comments
-    // https://eslint.org/docs/rules/multiline-comment-style
-    'multiline-comment-style': ['off', 'starred-block'],
-
     // require multiline ternary
     // http://eslint.org/docs/rules/multiline-ternary
-    // TODO: enable?
-    'multiline-ternary': ['off', 'never'],
+    // FIXME: enable?
+    'multiline-ternary': ['warn', 'never'],
 
     // disallow the omission of parentheses when invoking a constructor with no arguments
     // http://eslint.org/docs/rules/new-parens
     'new-parens': 'error',
-
-    // allow/disallow an empty newline after var statement
-    'newline-after-var': 'off',
-
-    // http://eslint.org/docs/rules/newline-before-return
-    'newline-before-return': 'off',
 
     // enforces new line after each method call in the chain to make it
     // more readable and easy to maintain
@@ -894,9 +755,6 @@ module.exports = {
     // disallow use of the continue statement
     // http://eslint.org/docs/rules/no-continue
     'no-continue': 'error',
-
-    // disallow comments inline after code
-    'no-inline-comments': 'off',
 
     // disallow if as the only statement in an else block
     // http://eslint.org/docs/rules/no-lonely-if
@@ -927,10 +785,6 @@ module.exports = {
 
     // disallow multiple empty lines and only one newline at the end
     'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 1 }],
-
-    // disallow negated conditions
-    // http://eslint.org/docs/rules/no-negated-condition
-    'no-negated-condition': 'off',
 
     // disallow nested ternary expressions
     'no-nested-ternary': 'error',
@@ -974,9 +828,6 @@ module.exports = {
     // disallow tab characters entirely
     'no-tabs': 'error',
 
-    // disallow the use of ternary operators
-    'no-ternary': 'off',
-
     // disallow trailing whitespace at the end of lines
     'no-trailing-spaces': [
       'error',
@@ -987,14 +838,6 @@ module.exports = {
     ],
     /////////////////////////
 
-    // disallow dangling underscores in identifiers
-    // 'no-underscore-dangle': ['error', {
-    //   allow: [],
-    //   allowAfterThis: false,
-    //   allowAfterSuper: false,
-    //   enforceInMethodNames: true,
-    // }],
-
     // disallow the use of Boolean literals in conditional expressions
     // also, prefer `a || b` over `a ? a : b`
     // http://eslint.org/docs/rules/no-unneeded-ternary
@@ -1003,10 +846,6 @@ module.exports = {
     // disallow whitespace before properties
     // http://eslint.org/docs/rules/no-whitespace-before-property
     'no-whitespace-before-property': 'error',
-
-    // enforce the location of single-line statements
-    // http://eslint.org/docs/rules/nonblock-statement-body-position
-    'nonblock-statement-body-position': 'off',
 
     // require padding inside curly braces
     'object-curly-spacing': ['error', 'always'],
@@ -1041,15 +880,8 @@ module.exports = {
     // http://eslint.org/docs/rules/operator-assignment
     'operator-assignment': ['error', 'always'],
 
-    // enforce operators to be placed before or after line breaks
-    'operator-linebreak': 'off',
-
     // disallow padding within blocks
     'padded-blocks': ['error', { blocks: 'never', classes: 'never', switches: 'never' }],
-
-    // Require or disallow padding lines between statements
-    // http://eslint.org/docs/rules/padding-line-between-statements
-    'padding-line-between-statements': 'off',
 
     // require quotes around object literal property names
     // http://eslint.org/docs/rules/quote-props.html
@@ -1057,10 +889,6 @@ module.exports = {
 
     // specify whether double or single quotes should be used
     quotes: ['error', 'single', { avoidEscape: true }],
-
-    // do not require jsdoc
-    // http://eslint.org/docs/rules/require-jsdoc
-    'require-jsdoc': 'off',
 
     // require or disallow use of semicolons instead of ASI
     semi: ['error', 'always'],
@@ -1071,9 +899,6 @@ module.exports = {
     // Enforce location of semicolons
     // http://eslint.org/docs/rules/semi-style
     'semi-style': ['error', 'last'],
-
-    // requires object keys to be sorted
-    'sort-keys': ['off', 'asc', { caseSensitive: false, natural: true }],
 
     // require or disallow space before blocks
     'space-before-blocks': 'error',
