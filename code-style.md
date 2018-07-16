@@ -23,6 +23,7 @@ TODO: **добавить ссылки на линтер**
   - [Массивы](#Массивы)
   - [Строки](#Строки)
   - [Функции](#Функции)
+  - [Стрелочные функции](#Стрелочные-функции)
   - [Инкременты и декременты](#Инкременты-и-декременты)
   - [Операторы сравнения и равенства](#Операторы-сравнения-и-равенства)
   - [Тернарные операторы](#Тернарные-операторы)
@@ -288,6 +289,10 @@ $$.Script.prototype.initDragger = function() {...};
 > eslint: [`prefer-const`](https://eslint.org/docs/rules/prefer-const.html), [`no-const-assign`](https://eslint.org/docs/rules/no-const-assign.html)
 
 ```javascript
+// очень-очень плохо
+a = 1;
+b = 2;
+
 // плохо
 var a = 1;
 var b = 2;
@@ -325,6 +330,41 @@ if (true) {
 console.log(a); // ReferenceError
 console.log(b); // ReferenceError
 ```
+
+Не создавайте цепочки присваивания переменных. 
+>eslint: [`no-multi-assign`](https://eslint.org/docs/rules/no-multi-assign)
+
+> Почему? Такие цепочки создают неявные глобальные переменные.
+
+```javascript
+// плохо
+(function example() {
+  // JavaScript интерпретирует это, как
+  // let a = ( b = ( c = 1 ) );
+  // Ключевое слово let применится только к переменной a;
+  // переменные b и c станут глобальными.
+  let a = b = c = 1;
+}());
+
+console.log(a); // throws ReferenceError
+console.log(b); // 1
+console.log(c); // 1
+
+ // хорошо
+(function example() {
+  let a = 1;
+  let b = a;
+  let c = a;
+}());
+
+console.log(a); // throws ReferenceError
+console.log(b); // throws ReferenceError
+console.log(c); // throws ReferenceError
+
+// тоже самое и для `const`
+```
+
+
 ---
 [<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
 
@@ -402,6 +442,25 @@ console.log(b); // ReferenceError
       'data-blah': 5,
     };
     ```
+
+Используйте точечную нотацию для доступа к свойствам. 
+
+>eslint: [`dot-notation`](https://eslint.org/docs/rules/dot-notation.html)
+
+```javascript
+const luke = {
+  jedi: true,
+  age: 28,
+};
+
+// плохо
+const isJedi = luke['jedi'];
+
+// хорошо
+const isJedi = luke.jedi;
+```
+
+
 [<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
 # Массивы
 Для создания массива используйте литеральную нотацию. 
@@ -701,6 +760,78 @@ console.log(
 );
 ```
 [<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
+
+
+# Стрелочные функции
+
+Когда вам необходимо использовать анонимную функцию (например, при передаче встроенной функции обратного вызова), используйте стрелочную функцию. 
+
+>eslint: [`prefer-arrow-callback`](https://eslint.org/docs/rules/prefer-arrow-callback.html), [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing.html)
+
+> Почему? Таким образом создается функция, которая выполняется в контексте `this`, который мы обычно хотим, а также это более короткий синтаксис.
+
+> Почему бы и нет? Если у вас есть довольно сложная функция, вы можете переместить эту логику внутрь ее собственного именованного функционального выражения.
+
+```javascript
+// плохо
+[1, 2, 3].map(function (x) {
+  const y = x + 1;
+  return x * y;
+});
+
+// хорошо
+[1, 2, 3].map((x) => {
+  const y = x + 1;
+  return x * y;
+});
+```
+
+Если тело функции состоит из одного оператора, возвращающего [выражение](https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Expressions_and_Operators#Выражения) без побочных эффектов, то опустите фигурные скобки и используйте неявное возвращение. В противном случае, сохраните фигурные скобки и используйте оператор `return`. 
+
+>eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens.html), [`arrow-body-style`](https://eslint.org/docs/rules/arrow-body-style.html)
+
+> Почему? Синтаксический сахар. Когда несколько функций соединены вместе, то это лучше читается.
+
+```javascript
+// плохо
+[1, 2, 3].map(number => {
+  const nextNumber = number + 1;
+  `A string containing the ${nextNumber}.`;
+});
+
+// хорошо
+[1, 2, 3].map(number => `A string containing the ${number}.`);
+
+// хорошо
+[1, 2, 3].map(number => {
+  const nextNumber = number + 1;
+  return `A string containing the ${nextNumber}.`;
+});
+
+// хорошо
+[1, 2, 3].map((number, index) => ({
+  [index]: number,
+}));
+
+// Неявный возврат с побочными эффектами
+function foo(callback) {
+  const val = callback();
+  if (val === true) {
+    // Сделать что-то, если функция обратного вызова вернет true
+  }
+}
+
+let bool = false;
+
+// плохо
+foo(() => bool = true);
+
+// хорошо
+foo(() => {
+  bool = true;
+});
+```
+
 
 # Инкременты и декременты
 

@@ -96,3 +96,15 @@
     // хорошо
     new Date(...[2016, 8, 5]);
     ```
+
+
+ <a name="es2016-properties--exponentiation-operator"></a><a name="12.3"></a>
+  - [12.3](#es2016-properties--exponentiation-operator) Используйте оператор `**` для возведения в степень. eslint: [`no-restricted-properties`](https://eslint.org/docs/rules/no-restricted-properties).
+
+    ```javascript
+    // плохо
+    const binary = Math.pow(2, 10);
+
+    // хорошо
+    const binary = 2 ** 10;
+    ```
