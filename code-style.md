@@ -20,7 +20,7 @@ TODO: **добавить ссылки на линтер**
   * [Операторы сравнения и равенства](#Операторы-сравнения-и-равенства)
   * [Тернарные операторы](#Тернарные-операторы)
   * [Строки](#Строки)
-  * [Map,ForEach,Filter,every/some](Map,ForEach,Filter,every/some)
+  * [Map,ForEach,Filter,every/some](#Map,ForEach,Filter,every/some)
 * [Список литературы](#Список-литературы)
 * [Changelog](#changelog)
 

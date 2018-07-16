@@ -136,14 +136,6 @@ module.exports = {
     // TODO: semver-major, set allowElseIf to false
     'no-else-return': ['error', { allowElseIf: true }],
 
-    // disallow empty functions, except for standalone funcs/arrows
-    // http://eslint.org/docs/rules/no-empty-function
-    'no-empty-function': [
-      'error',
-      {
-        allow: ['arrowFunctions', 'functions', 'methods'],
-      },
-    ],
 
     // disallow empty destructuring patterns
     // http://eslint.org/docs/rules/no-empty-pattern
