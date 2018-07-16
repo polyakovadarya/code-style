@@ -151,10 +151,10 @@ this.arr = [1, 2, 3].map(x => x + 1);
 
 ```javascript
 // плохо
-$('#items').find('.selected').highlight().end().find('.open').updateCount();
+this.dom.scene.find('.selected').highlight().end().find('.open').updateCount();
 
 // хорошо
-$('#items')
+this.dom.scene
 ··.find('.selected')
 ····.highlight()
 ····.end()
