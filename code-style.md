@@ -22,6 +22,8 @@ TODO: **добавить ссылки на линтер**
   - [Объекты](#Объекты)
   - [Массивы](#Массивы)
   - [Строки](#Строки)
+  - [Функции](#Функции)
+  - [Стрелочные функции](#Стрелочные-функции)
   - [Инкременты и декременты](#Инкременты-и-декременты)
   - [Операторы сравнения и равенства](#Операторы-сравнения-и-равенства)
   - [Тернарные операторы](#Тернарные-операторы)
@@ -44,6 +46,7 @@ TODO: **добавить ссылки на линтер**
 
 - применение лучших практик, которые будут понятны всем;
 - более понятный код;
+- Однородность кода;
 - уменьшение количества ошибок;
 - уменьшение времени на разработку;
 - уменьшение времени на понимание чужого кода;
@@ -53,23 +56,31 @@ TODO: **добавить ссылки на линтер**
 
 ## Пробелы, отступы и переносы
 
+`Отсутпы: 2 пробела.`
+
 Пробелы не ствятся:
 
 - между названием функции и скобкой;
 
+Однородность кода — это хорошо. Вам не надо будет добавлять или удалять пробел при манипуляции с именем.
+
 ```javascript
 // плохо
-function foo() {}
+const foo = function(){};
+const grove = function (){};
+const hide = function() {};
+
 // хорошо
-function foo() {}
+const getX = function () {};
+const getY = function a() {};
 ```
 
 - между круглыми скобками и их содержимым;
 
 ```javascript
 // плохо
-function foo(a) {
-  console.log('Hello', a);
+function foo( a ) {
+  console.log( 'Hello', a );
 }
 // хорошо
 function foo(a) {
@@ -81,8 +92,8 @@ function foo(a) {
 
 ```javascript
 // плохо
-const foo = [1, 2, 3];
-console.log(foo[0]);
+const foo = [ 1, 2, 3 ];
+console.log(foo[ 0 ]);
 
 // хорошо
 const foo = [1, 2, 3];
@@ -94,7 +105,7 @@ console.log(foo[0]);
 ```javascript
 // плохо
 this.var = {
-  number: 10,
+  number : 10,
 };
 // хорошо
 this.var = {
@@ -110,7 +121,7 @@ this.var = {
 
 ```javascript
 // плохо
-const x = y + 5;
+const x=y+5;
 
 // хорошо
 const x = y + 5;
@@ -120,7 +131,7 @@ const x = y + 5;
 
 ```javascript
 // плохо
-const foo = { clark: 'kent' };
+const foo = {clark: 'kent'};
 
 // хорошо
 const foo = { clark: 'kent' };
@@ -130,7 +141,7 @@ const foo = { clark: 'kent' };
 
 ```javascript
 // плохо
-const foo = { clark: 'kent', devid: 'selbi' };
+const foo = { clark: 'kent',devid: 'selbi' };
 // хорошо
 const foo = { clark: 'kent', devid: 'selbi' };
 ```
@@ -140,7 +151,7 @@ const foo = { clark: 'kent', devid: 'selbi' };
 ```javascript
 // плохо
 this.var = {
-  number: 10,
+  number:10,
 };
 // хорошо
 this.var = {
@@ -161,8 +172,6 @@ this.arr = [1, 2, 3].map((x) => {
 this.arr = [1, 2, 3].map((x) => x + 1);
 ```
 
-Отсутпы: **2 пробела**.
-
 Если есть цепочка вызовов, где каждый метод вызывается с новой строки, то эти методы должны быть на одном уровне, на следующем от объекта.
 
 Используйте переносы строк и отступы, когда делаете длинные цепочки методов (больше 2-х методов). Ставьте точку в начале строки, чтобы дать понять, что это не новая инструкция, а продолжение цепочки
@@ -178,7 +187,6 @@ this.dom.scene
 ····.end()
 ··.find('.open')
 ····.updateCount();
-
 
 // Отсутпы: 2 пробела.
 this.var = {
@@ -196,37 +204,37 @@ this.var = {
 ---
 TODO:
 ```javascript
-    // плохо
-    const arr = [
-      [0, 1], [2, 3], [4, 5],
-    ];
+// плохо
+const arr = [
+  [0, 1], [2, 3], [4, 5],
+];
 
-    const objectInArray = [{
-      id: 1,
-    }, {
-      id: 2,
-    }];
+const objectInArray = [{
+  id: 1,
+}, {
+  id: 2,
+}];
 
-    const numberInArray = [
-      1, 2,
-    ];
+const numberInArray = [
+  1, 2,
+];
 
-    // хорошо
-    const arr = [[0, 1], [2, 3], [4, 5]];
+// хорошо
+const arr = [[0, 1], [2, 3], [4, 5]];
 
-    const objectInArray = [
-      {
-        id: 1,
-      },
-      {
-        id: 2,
-      },
-    ];
+const objectInArray = [
+  {
+    id: 1,
+  },
+  {
+    id: 2,
+  },
+];
 
-    const numberInArray = [
-      1,
-      2,
-    ];
+const numberInArray = [
+  1,
+  2,
+];
 ```
 
 ---
@@ -257,13 +265,13 @@ const itemHeight = (item) => {
 
 ## Стиль регистра: CamelCase.
 
-> eslint: [`camelcase`](https://eslint.org/docs/rules/camelcase.html)
+
 > Cейчас у нас много где встречается регистр [Snake_case](https://ru.wikipedia.org/wiki/Snake_case), это пришло к нам от Ruby-стов вместе с CoffeeScript-ом.
 
 В мире JS везде стандартом является [CamelCase](https://ru.wikipedia.org/wiki/CamelCase) регистр. Это можно увидеть, например, в спецификациях [ECMAScript](https://www.ecma-international.org/ecma-262/)-а и [DOM](https://www.w3.org/TR/dom/)-а.
 
 Стандартные методы `this.tutor.play_button(), $$.scene__draw()` и методы компонентов остаются как есть.
-
+> eslint: [`camelcase`](https://eslint.org/docs/rules/camelcase.html)
 Пример:
 
 ```javascript
@@ -274,35 +282,17 @@ $$.Script.prototype.init_dragger = function() {...};
 $$.Script.prototype.initDragger = function() {...};
 ```
 
-## 1.3 Название функции должно отражать ее назначение
-
-Название функций должно быть глаголом. Если помимо глагола нужны ещё какие то пояснения, то глагол должен стоять вначале. Функциями так же являются и шаги в графе, и методы скрипта.
-
-> Функция, которая возвращает булевое значение (`true` или `false`), назвается — `Предикат`. Её название начинается с глагола `is...` (например: `isArray()`).
-Избегайте названий из одной буквы. Имя должно быть наглядным.
->eslint: [`id-length`](https://eslint.org/docs/rules/id-length)
-Пример:
-
-```javascript
-// Не очень хорошо
-$$.Script.prototype.dragger = function() {...};
-$$.Script.prototype.right = function() {...};
-
-// Хорошо
-$$.Script.prototype.initDragger = function() {...};
-$$.Script.prototype.renderDragger = function() {...};
-$$.Script.prototype.isRight = function() {...};
-```
-
-[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
-
-### Объявление переменных
+# Объявление переменных
 
 Используйте const для объявления переменных; избегайте var.
 Почему? Это гарантирует, что вы не сможете переопределять значения, т.к. это может привести к ошибкам и к усложнению понимания кода.
 > eslint: [`prefer-const`](https://eslint.org/docs/rules/prefer-const.html), [`no-const-assign`](https://eslint.org/docs/rules/no-const-assign.html)
 
 ```javascript
+// очень-очень плохо
+a = 1;
+b = 2;
+
 // плохо
 var a = 1;
 var b = 2;
@@ -341,9 +331,46 @@ console.log(a); // ReferenceError
 console.log(b); // ReferenceError
 ```
 
-[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
-#### Объекты 
+Не создавайте цепочки присваивания переменных. 
+>eslint: [`no-multi-assign`](https://eslint.org/docs/rules/no-multi-assign)
 
+> Почему? Такие цепочки создают неявные глобальные переменные.
+
+```javascript
+// плохо
+(function example() {
+  // JavaScript интерпретирует это, как
+  // let a = ( b = ( c = 1 ) );
+  // Ключевое слово let применится только к переменной a;
+  // переменные b и c станут глобальными.
+  let a = b = c = 1;
+}());
+
+console.log(a); // throws ReferenceError
+console.log(b); // 1
+console.log(c); // 1
+
+ // хорошо
+(function example() {
+  let a = 1;
+  let b = a;
+  let c = a;
+}());
+
+console.log(a); // throws ReferenceError
+console.log(b); // throws ReferenceError
+console.log(c); // throws ReferenceError
+
+// тоже самое и для `const`
+```
+
+
+---
+[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
+
+---
+
+# Объекты 
 Для создания объекта используйте литеральную нотацию. 
 >eslint: [`no-new-object`](https://eslint.org/docs/rules/no-new-object.html)
 
@@ -416,8 +443,28 @@ console.log(b); // ReferenceError
     };
     ```
 
-#### Массивы
-Для создания массива используйте литеральную нотацию. eslint: [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor.html)
+Используйте точечную нотацию для доступа к свойствам. 
+
+>eslint: [`dot-notation`](https://eslint.org/docs/rules/dot-notation.html)
+
+```javascript
+const luke = {
+  jedi: true,
+  age: 28,
+};
+
+// плохо
+const isJedi = luke['jedi'];
+
+// хорошо
+const isJedi = luke.jedi;
+```
+
+
+[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
+# Массивы
+Для создания массива используйте литеральную нотацию. 
+>eslint: [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor.html)
 
     ```javascript
     // плохо
@@ -455,52 +502,54 @@ console.log(b); // ReferenceError
     const nodes = [...foo];
     ```
 
-Используйте операторы `return` внутри функций обратного вызова в методах массива. Можно опустить `return`, когда тело функции состоит из одной инструкции, возврщающей выражение без побочных эффектов. [8.2](#arrows--implicit-return). eslint: [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
+Используйте операторы `return` внутри функций обратного вызова в методах массива. Можно опустить `return`, когда тело функции состоит из одной инструкции, возврщающей выражение без побочных эффектов.
+>eslint: [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
 
-    ```javascript
-    // хорошо
-    [1, 2, 3].map((x) => {
-      const y = x + 1;
-      return x * y;
-    });
+```javascript
+// хорошо
+[1, 2, 3].map((x) => {
+  const y = x + 1;
+  return x * y;
+});
 
-    // хорошо
-    [1, 2, 3].map(x => x + 1);
+// хорошо
+[1, 2, 3].map(x => x + 1);
 
-    // плохо - нет возвращаемого значения, следовательно, `acc` становится `undefined` после первой итерации
-    [[0, 1], [2, 3], [4, 5]].reduce((acc, item, index) => {
-      const flatten = acc.concat(item);
-      acc[index] = flatten;
-    });
+// плохо - нет возвращаемого значения, следовательно, `acc` становится `undefined` после первой итерации
+[[0, 1], [2, 3], [4, 5]].reduce((acc, item, index) => {
+  const flatten = acc.concat(item);
+  acc[index] = flatten;
+});
 
-    // хорошо
-    [[0, 1], [2, 3], [4, 5]].reduce((acc, item, index) => {
-      const flatten = acc.concat(item);
-      acc[index] = flatten;
-      return flatten;
-    });
+// хорошо
+[[0, 1], [2, 3], [4, 5]].reduce((acc, item, index) => {
+  const flatten = acc.concat(item);
+  acc[index] = flatten;
+  return flatten;
+});
 
-    // плохо
-    inbox.filter((msg) => {
-      const { subject, author } = msg;
-      if (subject === 'Mockingbird') {
-        return author === 'Harper Lee';
-      } else {
-        return false;
-      }
-    });
+// плохо
+inbox.filter((msg) => {
+  const { subject, author } = msg;
+  if (subject === 'Mockingbird') {
+    return author === 'Harper Lee';
+  } else {
+    return false;
+  }
+});
 
-    // хорошо
-    inbox.filter((msg) => {
-      const { subject, author } = msg;
-      if (subject === 'Mockingbird') {
-        return author === 'Harper Lee';
-      }
+// хорошо
+inbox.filter((msg) => {
+  const { subject, author } = msg;
+  if (subject === 'Mockingbird') {
+    return author === 'Harper Lee';
+  }
 
-      return false;
-    });
-    ```
-#### Строки
+  return false;
+});
+```
+[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
+# Строки
 
 Используйте одинарные кавычки `''` для строк.
 >eslint: [`quotes`](https://eslint.org/docs/rules/quotes.html)
@@ -571,8 +620,220 @@ function sayHi(name) {
 }
 ```
 
+Не используйте в строках необязательные экранирующие символы. 
+>eslint: [`no-useless-escape`](https://eslint.org/docs/rules/no-useless-escape)
 
-#### Инкременты и декременты
+> Почему? Обратные слеши ухудшают читабельность, поэтому они должны быть только при необходимости.
+```javascript
+  // плохо
+  const foo = '\'this\' \i\s \"quoted\"';
+  // хорошо
+  const foo = '\'this\' is "quoted"';
+  const foo = `my name is '${name}'`;
+```
+
+[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
+
+# Функции
+
+Название функций должно быть глаголом. Если помимо глагола нужны ещё какие то пояснения, то глагол должен стоять вначале. Функциями так же являются и шаги в графе, и методы скрипта.
+
+> Функция, которая возвращает булевое значение (`true` или `false`), назвается — `Предикат`. Её название начинается с глагола `is...` (например: `isArray()`).
+Избегайте названий из одной буквы. Имя должно быть наглядным.
+>eslint: [`id-length`](https://eslint.org/docs/rules/id-length)
+Пример:
+
+```javascript
+// Не очень хорошо
+$$.Script.prototype.dragger = function() {...};
+$$.Script.prototype.right = function() {...};
+
+// Хорошо
+$$.Script.prototype.initDragger = function() {...};
+$$.Script.prototype.renderDragger = function() {...};
+$$.Script.prototype.isRight = function() {...};
+```
+
+Никогда не называйте параметр `arguments`. Он будет иметь приоритет над объектом `arguments`, который доступен для каждой функции.
+
+```javascript
+// плохо
+function foo(name, options, arguments) {
+  // ...
+}
+
+// хорошо
+function foo(name, options, args) {
+  // ...
+}
+```
+
+
+Никогда не используйте `arguments`, вместо этого используйте синтаксис оставшихся параметров `...`. 
+> Почему? `...` явно говорит о том, какие именно аргументы вы хотите извлечь. Кроме того, такой синтаксис создает настоящий массив, а не массиво-подобный объект как `arguments`.
+
+>eslint: [`prefer-rest-params`](https://eslint.org/docs/rules/prefer-rest-params)
+
+```javascript
+// плохо
+function concatenateAll() {
+  const args = Array.prototype.slice.call(arguments);
+  return args.join('');
+}
+// хорошо
+function concatenateAll(...args) {
+  return args.join('');
+}
+```
+
+
+Используйте синтаксис записи аргументов по умолчанию, а не изменяйте аргументы функции.
+
+```javascript
+// очень плохо
+function handleThings(opts) {
+  // Нет! Мы не должны изменять аргументы функции.
+  // Плохо вдвойне: если переменная opts будет ложной,
+  // то ей присвоится пустой объект, а не то что вы хотели.
+  // Это приведет к коварным ошибкам.
+  opts = opts || {};
+  // ...
+}
+// все еще плохо
+function handleThings(opts) {
+  if (opts === void 0) {
+    opts = {};
+  }
+  // ...
+}
+// хорошо
+function handleThings(opts = {}) {
+  // ...
+}
+```
+
+Избегайте побочных эффектов с параметрами по умолчанию.
+
+> Почему? И так все понятно.
+
+```javascript
+var b = 1;
+// плохо
+function count(a = b++) {
+  console.log(a);
+}
+count();  // 1
+count();  // 2
+count(3); // 3
+count();  // 3
+```
+Функции с многострочным определением или запуском должны содержать такие же отступы, как и другие многострочные списки в этом руководстве: с каждым элементом на отдельной строке, с запятой в конце элемента. 
+>eslint: [`function-paren-newline`](https://eslint.org/docs/rules/function-paren-newline)
+
+```javascript
+// плохо
+function foo(bar,
+            baz,
+            quux) {
+  // ...
+}
+
+// хорошо
+function foo(
+  bar,
+  baz,
+  quux,
+) {
+  // ...
+}
+
+// плохо
+console.log(foo,
+  bar,
+  baz);
+
+// хорошо
+console.log(
+  foo,
+  bar,
+  baz,
+);
+```
+[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
+
+
+# Стрелочные функции
+
+Когда вам необходимо использовать анонимную функцию (например, при передаче встроенной функции обратного вызова), используйте стрелочную функцию. 
+
+>eslint: [`prefer-arrow-callback`](https://eslint.org/docs/rules/prefer-arrow-callback.html), [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing.html)
+
+> Почему? Таким образом создается функция, которая выполняется в контексте `this`, который мы обычно хотим, а также это более короткий синтаксис.
+
+> Почему бы и нет? Если у вас есть довольно сложная функция, вы можете переместить эту логику внутрь ее собственного именованного функционального выражения.
+
+```javascript
+// плохо
+[1, 2, 3].map(function (x) {
+  const y = x + 1;
+  return x * y;
+});
+
+// хорошо
+[1, 2, 3].map((x) => {
+  const y = x + 1;
+  return x * y;
+});
+```
+
+Если тело функции состоит из одного оператора, возвращающего [выражение](https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Expressions_and_Operators#Выражения) без побочных эффектов, то опустите фигурные скобки и используйте неявное возвращение. В противном случае, сохраните фигурные скобки и используйте оператор `return`. 
+
+>eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens.html), [`arrow-body-style`](https://eslint.org/docs/rules/arrow-body-style.html)
+
+> Почему? Синтаксический сахар. Когда несколько функций соединены вместе, то это лучше читается.
+
+```javascript
+// плохо
+[1, 2, 3].map(number => {
+  const nextNumber = number + 1;
+  `A string containing the ${nextNumber}.`;
+});
+
+// хорошо
+[1, 2, 3].map(number => `A string containing the ${number}.`);
+
+// хорошо
+[1, 2, 3].map(number => {
+  const nextNumber = number + 1;
+  return `A string containing the ${nextNumber}.`;
+});
+
+// хорошо
+[1, 2, 3].map((number, index) => ({
+  [index]: number,
+}));
+
+// Неявный возврат с побочными эффектами
+function foo(callback) {
+  const val = callback();
+  if (val === true) {
+    // Сделать что-то, если функция обратного вызова вернет true
+  }
+}
+
+let bool = false;
+
+// плохо
+foo(() => bool = true);
+
+// хорошо
+foo(() => {
+  bool = true;
+});
+```
+
+
+# Инкременты и декременты
 
 Избегайте использования унарных инкрементов и декрементов (`++`, `--`)
 
@@ -592,7 +853,7 @@ num += 1;
 num -= 1;
 ```
 
-#### Операторы сравнения и равенства
+# Операторы сравнения и равенства
 
 Используйте `===` и `!==` вместо `==` и `!=`
 >eslint: [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq.html)
@@ -654,9 +915,11 @@ if (collection.length > 0) {
 
 > `0` и `1` также приводятся к `boolean` <br> > `0` это `false`, `1` это `true`
 
-#### Тернарные операторы
+# Тернарные операторы
 
 > Тернарные операторы не должны быть вложены и в большинстве случаев должны быть расположены на одной строке
+
+>eslint: [`no-nested-ternary`](https://eslint.org/docs/rules/no-nested-ternary.html)
 
 ```javascript
 // плохо
@@ -673,6 +936,8 @@ const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
 
 > Избегайте ненужных тернарных операторов
 
+>eslint: [`no-unneeded-ternary`](https://eslint.org/docs/rules/no-unneeded-ternary.html)
+
 ```javascript
 // плохо
 const foo = a ? a : b;
@@ -685,7 +950,11 @@ const bar = !!c;
 const baz = !c;
 ```
 
-> При смешивании операторов, помещайте их в круглые скобки. Единственное исключение — это стандартные арифметические операторы (`+, -, *` и `/`), так как их приоритет широко известен.
+При смешивании операторов, помещайте их в круглые скобки. Единственное исключение — это стандартные арифметические операторы (`+, -, *` и `/`), так как их приоритет широко известен.
+
+>Почему? Это улучшает читаемость и уточняет намерения разработчика.
+
+>eslint: [`no-mixed-operators`](https://eslint.org/docs/rules/no-mixed-operators.html)
 
 ```javascript
 // плохо
@@ -714,19 +983,65 @@ if (a || (b && c)) {
 const bar = a + (b / c) * d;
 ```
 
+Используйте фигурные скобки для `case` и `default`, если они содержат лексические декларации (например, `let`, `const`, `function`, и `class`). 
+
+
+> Почему? Лексические декларации видны во всем `switch` блоке, но инициализируются только при присваиваниикоторое происходит при входе в блок `case`. Возникают проблемы, когда множество `case` пытаются определить одно то же
+
+>eslint: [`no-case-declarations`](https://eslint.org/docs/rules/no-case-declarations.html).
+```javascript
+// плохо
+switch (foo) {
+  case 1:
+    let x = 1;
+    break;
+  case 2:
+    const y = 2;
+    break;
+  case 3:
+    function f() {
+      // ...
+    }
+    break;
+  default:
+    class C {}
+}
+
+// хорошо
+switch (foo) {
+  case 1: {
+    let x = 1;
+    break;
+  }
+  case 2: {
+    const y = 2;
+    break;
+  }
+  case 3: {
+    function f() {
+      // ...
+    }
+    break;
+  }
+  case 4:
+    bar();
+    break;
+  default: {
+    class C {}
+  }
+}
+```
+
 [<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
 
 
-
-[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
-
-### `map,forEach,filter,every/some`
+# `map,forEach,filter,every/some`
 
 Стараемся избавляться от циклов. При больших объемах читаемость заметно ухудшается.
 
 ---
 
-#### `forEach` VS `for`
+### `forEach` VS `for`
 
 [Пример](https://thejsguy.com/2016/07/30/javascript-for-loop-vs-array-foreach.html)
 

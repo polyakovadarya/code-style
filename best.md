@@ -49,3 +49,62 @@
       return `${firstName} ${lastName}`;
     }
     ```
+
+
+    <a name="destructuring--object-over-array"></a><a name="5.3"></a>
+Используйте деструктуризацию объекта для множества возвращаемых значений, но не делайте тоже самое с массивами.
+
+    > Почему? Вы cможете добавить новые свойства через некоторое время или изменить порядок без последствий.
+
+    ```javascript
+    // плохо
+    function processInput(input) {
+      // затем происходит чудо
+      return [left, right, top, bottom];
+    }
+
+    // при вызове нужно подумать о порядке возвращаемых данных
+    const [left, __, top] = processInput(input);
+
+    // хорошо
+    function processInput(input) {
+      // затем происходит чудо
+      return { left, right, top, bottom };
+    }
+
+    // при вызове выбираем только необходимые данные
+    const { left, top } = processInput(input);
+    ```
+
+<a name="functions--spread-vs-apply"></a><a name="7.14"></a>
+  - [7.14](#functions--spread-vs-apply) Отдавайте предпочтение использованию оператора расширения `...` при вызове вариативной функции. eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
+
+    > Почему? Это чище, вам не нужно предоставлять контекст, и не так просто составить `new` с `apply`.
+
+    ```javascript
+    // плохо
+    const x = [1, 2, 3, 4, 5];
+    console.log.apply(console, x);
+
+    // хорошо
+    const x = [1, 2, 3, 4, 5];
+    console.log(...x);
+
+    // плохо
+    new (Function.prototype.bind.apply(Date, [null, 2016, 8, 5]));
+
+    // хорошо
+    new Date(...[2016, 8, 5]);
+    ```
+
+
+ <a name="es2016-properties--exponentiation-operator"></a><a name="12.3"></a>
+  - [12.3](#es2016-properties--exponentiation-operator) Используйте оператор `**` для возведения в степень. eslint: [`no-restricted-properties`](https://eslint.org/docs/rules/no-restricted-properties).
+
+    ```javascript
+    // плохо
+    const binary = Math.pow(2, 10);
+
+    // хорошо
+    const binary = 2 ** 10;
+    ```
