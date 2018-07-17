@@ -33,6 +33,7 @@
 - [Map, ForEach, Filter, every/some](#Map,ForEach,Filter,every/some)
 ---
 - [Инструменты](#Инструменты)
+- [Полезные ссылки](#Полезные-ссылки)
 - [Список литературы](#Список-литературы)
 - [Changelog](#changelog)
 
@@ -1406,6 +1407,8 @@ if (collection.length > 0) {
 
 > `0` и `1` также приводятся к `boolean` <br> > `0` это `false`, `1` это `true`
 
+[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
+
 # Тернарные операторы
 
 Тернарные операторы не должны быть вложены и в большинстве случаев должны быть расположены на одной строке
@@ -1582,7 +1585,7 @@ const hasAge = Boolean(age);
 // отлично
 const hasAge = !!age;
 ```
-
+[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
 
 # `map,forEach,filter,every/some`
 
@@ -1711,8 +1714,8 @@ console.warn(arr.some(isPositive)); // true, есть хоть одно поло
   - [`stylelint`](https://marketplace.visualstudio.com/items?itemName=shinnn.stylelint) (для работы нужен конфиг с правилами).
   - [`Code Spell Checker`](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker).
   - [`Bracket Pair Colorizer`](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer).
-  - [`One Dark Pro`](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme).
-  - [`vscode-icons`](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons).
+  - [`One Dark Pro`](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme) - тема.
+  - [`vscode-icons`](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons) - иконки.
 - Линтер - инструмент, который позволяет:
   - проводить анализ качества вашего кода
   - соблюдать единый код стайл
@@ -1729,9 +1732,13 @@ console.warn(arr.some(isPositive)); // true, есть хоть одно поло
 
 Установка линтера **`обязательна`**.
 
+# Полезные ссылки
+- [10 Tips for Javascript Debugging Like a PRO with Console](https://medium.com/appsflyer/10-tips-for-javascript-debugging-like-a-pro-with-console-7140027eb5f6)
+- [The ultimate whatever-to-number conversion table:](https://stackoverflow.com/questions/17106681/parseint-vs-unary-plus-when-to-use-which/17106702#17106702)
+- [Modern JS Cheatsheet](https://mbeaudru.github.io/modern-js-cheatsheet/)
+
 # Список литературы
 
 - [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript/)
 - [CoffeeScript Style Guide (Middle_math)](https://github.com/uchiru/content/blob/master/doc/custom/middle_math_mos/style-guide-coffeescript.md)
-- [console](https://medium.com/appsflyer/10-tips-for-javascript-debugging-like-a-pro-with-console-7140027eb5f6)
 - [Таблица типов](img/tableOfTypes.png)
