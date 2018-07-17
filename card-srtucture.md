@@ -273,3 +273,9 @@ $$.Script.prototype.deinit = function(cb) {
 ## offtop
 
 TODO: fork, join, next(), task={}, delay
+
+
+# .js
+TODO: что то, хз что, все свзязано с графом
+# .scss
+TODO: ASSET_PATH, &{}
