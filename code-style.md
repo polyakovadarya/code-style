@@ -265,31 +265,233 @@ const itemHeight = (item) => {
 
 [<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
 
-## Блоки.
+## Блоки
 
 Используйте фигурные скобки, когда блок кода занимает несколько строк. eslint: [`nonblock-statement-body-position`](https://eslint.org/docs/rules/nonblock-statement-body-position)
 
-    ```javascript
-    // плохо
-    if (test)
-      return false;
+```javascript
+// плохо
+if (test)
+  return false;
+// хорошо
+if (test) return false;
+// хорошо
+if (test) {
+  return false;
+}
+// плохо
+function foo() { return false; }
+// хорошо
+function bar() {
+  return false;
+}
+```
 
-    // хорошо
-    if (test) return false;
+Если блоки кода в условии `if` и `else` занимают несколько строк, расположите оператор `else` на той же строчке, где находится закрывающая фигурная скобка блока `if`. 
+>eslint: [`brace-style`](https://eslint.org/docs/rules/brace-style.html)
 
-    // хорошо
-    if (test) {
-      return false;
+```javascript
+// плохо
+if (test) {
+  thing1();
+  thing2();
+}
+else {
+  thing3();
+}
+// хорошо
+if (test) {
+  thing1();
+  thing2();
+} else {
+  thing3();
+}
+```
+
+Если в блоке `if` всегда выполняется оператор `return`, последующий блок `else` не нужен. `return`  внутри блока `else if`, следующем за блоком `if`, который содержит `return`, может быть разделен на несколько блоков `if`. 
+>eslint: [`no-else-return`](https://eslint.org/docs/rules/no-else-return)
+
+```javascript
+// плохо
+function foo() {
+  if (x) {
+    return x;
+  } else {
+    return y;
+  }
+}
+// плохо
+function cats() {
+  if (x) {
+    return x;
+  } else if (y) {
+    return y;
+  }
+}
+// плохо
+function dogs() {
+  if (x) {
+    return x;
+  } else {
+    if (y) {
+      return y;
     }
+  }
+}
+// хорошо
+function foo() {
+  if (x) {
+    return x;
+  }
+  return y;
+}
 
-    // плохо
-    function foo() { return false; }
-
-    // хорошо
-    function bar() {
-      return false;
+// хорошо
+function cats() {
+  if (x) {
+    return x;
+  }
+  if (y) {
+    return y;
+  }
+}
+// хорошо
+function dogs(x) {
+  if (x) {
+    if (z) {
+      return y;
     }
-    ```
+  } else {
+    return z;
+  }
+}
+```
+## Управляющие операторы
+
+Если ваш управляющий оператор (`if`, `while` и т.д.) слишком длинный или превышает максимальную длину строки, то каждое (сгруппированное) условие можно поместить на новую строку. Логический оператор должен располагаться в начале строки.
+
+Наличие операторов в начале строки приводит к выравниванию операторов и напоминает цепочку методов. Это также улучшает читаемость, упрощая визуальное отслеживание сложной логики.
+
+
+```javascript
+// плохо
+if ((foo === 123 || bar === 'abc') &doesItLookGoodWhenItBecomesThatLong() &isThisReallyHappening()) {
+  thing1();
+}
+// плохо
+if (foo === 123 &&
+  bar === 'abc') {
+  thing1();
+}
+// плохо
+if (foo === 123
+  && bar === 'abc') {
+  thing1();
+}
+// плохо
+if (
+  foo === 123 &&
+  bar === 'abc'
+) {
+  thing1();
+}
+// хорошо
+if (
+  foo === 123
+  && bar === 'abc'
+) {
+  thing1();
+}
+// хорошо
+if (
+  (foo === 123 || bar === 'abc')
+  && doesItLookGoodWhenItBecomesThatLong()
+  && isThisReallyHappening()
+) {
+  thing1();
+}
+// хорошо
+if (foo === 123 && bar === 'abc') {
+  thing1();
+}
+```
+Не используйте операторы выбора вместо управляющих операторов.
+
+```javascript
+// плохо
+!isRunning && startRunning();
+// хорошо
+if (!isRunning) {
+  startRunning();
+}
+```
+
+## Коментарии
+
+Используйте двойной слэш `//` для однострочных комментариев. Располагайте такие комментарии отдельной строкой над кодом, который хотите пояснить. Если комментарий не является первой строкой блока, добавьте сверху пустую строку.
+
+```javascript
+// плохо
+const active = true;  // это текущая вкладка
+// хорошо
+// это текущая вкладка
+const active = true;
+// плохо
+function getType() {
+  console.log('fetching type...');
+  // установить по умолчанию тип 'no type'
+  const type = this.type || 'no type';
+  return type;
+}
+// хорошо
+function getType() {
+  console.log('fetching type...');
+  // установить по умолчанию тип 'no type'
+  const type = this.type || 'no type';
+  return type;
+}
+// тоже хорошо
+function getType() {
+  // установить по умолчанию тип 'no type'
+  const type = this.type || 'no type';
+  return type;
+}
+```
+
+Начинайте все комментарии с пробела, так их проще читать. 
+>eslint: [`spaced-comment`](https://eslint.org/docs/rules/spaced-comment)
+
+```javascript
+// плохо
+
+//это текущая вкладка
+const active = true;
+// хорошо
+// это текущая вкладка
+const active = true;
+
+// плохо
+
+/**
+ *make() возвращает новый элемент
+ *соответствующий переданному названию тега
+ */
+function make(tag) {
+  // ...
+  return element;
+}
+
+// хорошо
+
+/**
+ * make() возвращает новый элемент
+ * соответствующий переданному названию тега
+ */
+function make(tag) {
+  // ...
+  return element;
+}
+```
 
 ## Стиль регистра: CamelCase.
 
@@ -401,70 +603,68 @@ console.log(c); // throws ReferenceError
 Для создания объекта используйте литеральную нотацию. 
 >eslint: [`no-new-object`](https://eslint.org/docs/rules/no-new-object.html)
 
-    ```javascript
-    // плохо
-    const item = new Object();
+```javascript
+// плохо
+const item = new Object();
 
-    // хорошо
-    const item = {};
-    ```
+// хорошо
+const item = {};
+```
 Используйте сокращенную запись метода объекта. 
 >eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand.html)
 
-    ```javascript
-    // плохо
-    const atom = {
-      value: 1,
+```javascript
+// плохо
+const atom = {
+  value: 1,
 
-      addValue: function (value) {
-        return atom.value + value;
-      },
-    };
+  addValue: function (value) {
+    return atom.value + value;
+  },
+};
 
-    // хорошо
-    const atom = {
-      value: 1,
+// хорошо
+const atom = {
+  value: 1,
 
-      addValue(value) {
-        return atom.value + value;
-      },
-    };
-    ```
+  addValue(value) {
+    return atom.value + value;
+  },
+};
+```
 
 Используйте сокращенную запись свойств объекта.  Это короче и понятнее.
 >eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand.html)
 
-    ```javascript
-    const lukeSkywalker = 'Luke Skywalker';
-
-    // плохо
-    const obj = {
-      lukeSkywalker: lukeSkywalker,
-    };
-
-    // хорошо
-    const obj = {
-      lukeSkywalker,
-    };
-    ```
+```javascript
+const lukeSkywalker = 'Luke Skywalker';
+// плохо
+const obj = {
+  lukeSkywalker: lukeSkywalker,
+};
+// хорошо
+const obj = {
+  lukeSkywalker,
+};
+```
 Только недопустимые идентификаторы помещаются в кавычки. Это улучшает подсветку синтаксиса, а также облегчает оптимизацию для многих JS движков.
 >eslint: [`quote-props`](https://eslint.org/docs/rules/quote-props.html)
 
-    ```javascript
-    // плохо
-    const bad = {
-      'foo': 3,
-      'bar': 4,
-      'data-blah': 5,
-    };
+```javascript
+// плохо
+const bad = {
+  'foo': 3,
+  'bar': 4,
+  'data-blah': 5,
+};
 
-    // хорошо
-    const good = {
-      foo: 3,
-      bar: 4,
-      'data-blah': 5,
-    };
-    ```
+// хорошо
+const good = {
+  foo: 3,
+  bar: 4,
+  'data-blah': 5,
+};
+```
 
 Используйте точечную нотацию для доступа к свойствам. 
 
@@ -489,41 +689,41 @@ const isJedi = luke.jedi;
 Для создания массива используйте литеральную нотацию. 
 >eslint: [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor.html)
 
-    ```javascript
-    // плохо
-    const items = new Array();
+```javascript
+// плохо
+const items = new Array();
 
-    // хорошо
-    const items = [];
-    ```
+// хорошо
+const items = [];
+```
 
 Для копирования массивов используйте оператор расширения `...`.
 
-    ```javascript
-    // плохо
-    const len = items.length;
-    const itemsCopy = [];
-    let i;
+```javascript
+// плохо
+const len = items.length;
+const itemsCopy = [];
+let i;
 
-    for (i = 0; i < len; i += 1) {
-      itemsCopy[i] = items[i];
-    }
+for (i = 0; i < len; i += 1) {
+  itemsCopy[i] = items[i];
+}
 
-    // хорошо
-    const itemsCopy = [...items];
-    ```
+// хорошо
+const itemsCopy = [...items];
+```
 
 Для преобразования массиво-подобного объекта в массив используйте оператор расширения `...` вместо [`Array.from`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from).
 
-    ```javascript
-    const foo = document.querySelectorAll('.foo');
+```javascript
+const foo = document.querySelectorAll('.foo');
 
-    // хорошо
-    const nodes = Array.from(foo);
+// хорошо
+const nodes = Array.from(foo);
 
-    // отлично
-    const nodes = [...foo];
-    ```
+// отлично
+const nodes = [...foo];
+```
 
 Используйте операторы `return` внутри функций обратного вызова в методах массива. Можно опустить `return`, когда тело функции состоит из одной инструкции, возврщающей выражение без побочных эффектов.
 >eslint: [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
