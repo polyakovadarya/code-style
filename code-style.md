@@ -13,7 +13,9 @@
   - [Пробелы, отступы и переносы](#Пробелы-отступы-и-переносы)
   - [Блоки](#Блоки)
   - [Управляющие операторы](#Управляющие-операторы)
-  - [Конментарии](#Коментарии)
+  - [Коментарии](#Коментарии)
+  - [Запятые](#Запятые)
+  - [Точка с запятой](#Точка-с-запятой)
   - [Стиль регистра: CamelCase](#Стиль-регистра-camelcase)
   - [Название функции должно отражать ее назначение](#Название-функции-должно-отражать-ее-назначение)
 ---
@@ -25,6 +27,7 @@
   - [Стрелочные функции](#Стрелочные-функции)
   - [Инкременты и декременты](#Инкременты-и-декременты)
   - [Операторы сравнения и равенства](#Операторы-сравнения-и-равенства)
+  - [Приведение типов](#Приведение-типов)
   - [Тернарные операторы](#Тернарные-операторы)
 
 - [Map, ForEach, Filter, every/some](#Map,ForEach,Filter,every/some)
@@ -601,7 +604,162 @@ function make(tag) {
   return element;
 }
 ```
+# Запятые
 
+Не начинайте строку с запятой. 
+>eslint: comma-style
+
+```javascript
+// плохо
+const story = [
+    once
+  , upon
+  , aTime
+];
+
+// хорошо
+const story = [
+  once,
+  upon,
+  aTime,
+];
+```
+Добавляйте висячие запятые. 
+Такой подход дает понятную разницу при просмотре изменений. Кроме того, транспиляторы типа Babel удалят висячие запятые из собранного кода, поэтому вы можете не беспокоиться о проблемах в старых браузерах.
+>eslint: comma-dangle
+
+```diff
+// плохо - git diff без висячей запятой
+const hero = {
+     firstName: 'Florence',
+-    lastName: 'Nightingale'
++    lastName: 'Nightingale',
++    inventorOf: ['coxcomb chart', 'modern nursing']
+};
+
+// хорошо - git diff с висячей запятой
+const hero = {
+     firstName: 'Florence',
+     lastName: 'Nightingale',
++    inventorOf: ['coxcomb chart', 'modern nursing'],
+};
+```
+```javascript
+// плохо
+const hero = {
+  firstName: 'Dana',
+  lastName: 'Scully'
+};
+
+const heroes = [
+  'Batman',
+  'Superman'
+];
+
+// хорошо
+const hero = {
+  firstName: 'Dana',
+  lastName: 'Scully',
+};
+
+const heroes = [
+  'Batman',
+  'Superman',
+];
+
+// плохо
+function createHero(
+  firstName,
+  lastName,
+  inventorOf
+) {
+  // ничего не делает
+}
+
+// хорошо
+function createHero(
+  firstName,
+  lastName,
+  inventorOf,
+) {
+  // ничего не делает
+}
+
+// хорошо (обратите внимание, что висячей запятой не должно быть после "rest"-параметра)
+function createHero(
+  firstName,
+  lastName,
+  inventorOf,
+  ...heroArgs
+) {
+  // ничего не делает
+}
+
+// плохо
+createHero(
+  firstName,
+  lastName,
+  inventorOf
+);
+
+// хорошо
+createHero(
+  firstName,
+  lastName,
+  inventorOf,
+);
+
+// хорошо (обратите внимание, что висячей запятой не должно быть после "rest"-аргумента)
+createHero(
+  firstName,
+  lastName,
+  inventorOf,
+  ...heroArgs
+);
+```
+# Точка с запятой
+Когда JavaScript встречает перенос строки без точки с запятой, он ипользует правило под названием [Автоматическая Вставка Точки с запятой (Automatic Semicolon Insertion)](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion), чтобы определить, стоит ли считать этот перенос строки как конец выражения и (как следует из названия) поместить точку с запятой в вашем коде до переноса строки. Однако, ASI содержит несколько странных форм поведения, и ваш код может быть сломан, если JavaScript неверно истолкует ваш перенос строки. Эти правила станут сложнее, когда новые возможности станут частью JavaScript. Явное завершение ваших выражений и настройка вашего линтера для улавливания пропущенных точек с запятыми помогут вам предотвратить возникновение проблем.
+
+>eslint: [`semi`](https://eslint.org/docs/rules/semi.html)
+
+```javascript
+// плохо - выбрасывает исключение
+const luke = {}
+const leia = {}
+[luke, leia].forEach(jedi => jedi.father = 'vader')
+
+// плохо - выбрасывает исключение
+const reaction = 'No! That's impossible!'
+(async function meanwhileOnTheFalcon() {
+  // переносимся к `leia`, `lando`, `chewie`, `r2`, `c3p0`
+  // ...
+}())
+
+// плохо - возвращает `undefined` вместо значения на следующей строке. Так всегда происходит, когда `return` расположен сам по себе, потому что ASI (Автоматическая Вставка Точки с запятой)!
+function foo() {
+  return
+    'search your feelings, you know it to be foo'
+}
+
+// хорошо
+const luke = {};
+const leia = {};
+[luke, leia].forEach((jedi) => {
+  jedi.father = 'vader';
+});
+
+// хорошо
+const reaction = 'No! That's impossible!';
+(async function meanwhileOnTheFalcon() {
+  // переносимся к `leia`, `lando`, `chewie`, `r2`, `c3p0`
+  // ...
+  }());
+
+// хорошо
+function foo() {
+  return 'search your feelings, you know it to be foo';
+}
+```
 # Стиль регистра: CamelCase.
 
 
@@ -1384,6 +1542,64 @@ switch (foo) {
 
 [<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
 
+# Приведение типов
+Выполняйте приведение типов в начале инструкции.
+* Строки
+>eslint: no-new-wrappers
+```javascript
+// => this.reviewScore = 9;
+
+// плохо
+const totalScore = new String(this.reviewScore); // тип totalScore будет "object", а не "string"
+
+// плохо
+const totalScore = this.reviewScore + ''; // вызывает this.reviewScore.valueOf()
+
+// плохо
+const totalScore = this.reviewScore.toString(); // нет гарантии что вернется строка
+
+// хорошо
+const totalScore = String(this.reviewScore);
+```
+* Числа: Используйте `Number` и `parseInt` с основанием системы счисления. 
+>eslint: radix no-new-wrappers
+```javascript
+const inputValue = '4';
+
+// плохо
+const val = new Number(inputValue);
+
+// плохо
+const val = +inputValue;
+
+// плохо
+const val = inputValue >> 0;
+
+// плохо
+const val = parseInt(inputValue);
+
+// хорошо
+const val = Number(inputValue);
+
+// хорошо
+const val = parseInt(inputValue, 10);
+```
+* Логические типы
+> eslint: no-new-wrappers
+
+```javascript
+const age = 0;
+
+// плохо
+const hasAge = new Boolean(age);
+
+// хорошо
+const hasAge = Boolean(age);
+
+// отлично
+const hasAge = !!age;
+```
+
 
 # `map,forEach,filter,every/some`
 
@@ -1534,3 +1750,5 @@ console.warn(arr.some(isPositive)); // true, есть хоть одно поло
 
 - [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript/)
 - [CoffeeScript Style Guide (Middle_math)](https://github.com/uchiru/content/blob/master/doc/custom/middle_math_mos/style-guide-coffeescript.md)
+- [console](https://medium.com/appsflyer/10-tips-for-javascript-debugging-like-a-pro-with-console-7140027eb5f6)
+- [Таблица типов](img/tableOfTypes.png)
