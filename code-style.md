@@ -961,14 +961,35 @@ function sayHi(name) {
   const foo = `my name is '${name}'`;
 ```
 
+Старайтесь не допускать, чтобы строки кода были длиннее 100 символов (включая пробелы). Длинные строки с текстом освобождаются от этого правила и не должны разбиваться на несколько строк. 
+
+Это обеспечивает удобство чтения и поддержки кода.
+>eslint: [`max-len`](https://eslint.org/docs/rules/max-len.html)
+
+TODO: добавить анимацию с промисами в качестве примеров
+```javascript
+// плохо
+const foo = jsonData && jsonData.foo && jsonData.foo.bar && jsonData.foo.bar.baz && jsonData.foo.bar.baz.quux && jsonData.foo.bar.baz.quux.xyzzy;
+
+// хорошо
+const foo = jsonData
+  && jsonData.foo
+  && jsonData.foo.bar
+  && jsonData.foo.bar.baz
+  && jsonData.foo.bar.baz.quux
+  && jsonData.foo.bar.baz.quux.xyzzy;
+```
+
+
 [<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
 
 # Функции
 
 Название функций должно быть глаголом. Если помимо глагола нужны ещё какие то пояснения, то глагол должен стоять вначале. Функциями так же являются и шаги в графе, и методы скрипта.
 
-> Функция, которая возвращает булевое значение (`true` или `false`), назвается — `Предикат`. Её название начинается с глагола `is...` (например: `isArray()`).
+Функция, которая возвращает булевое значение (`true` или `false`), назвается — `Предикат`. Её название начинается с глагола `is...` (например: `isArray()`).
 Избегайте названий из одной буквы. Имя должно быть наглядным.
+
 >eslint: [`id-length`](https://eslint.org/docs/rules/id-length)
 Пример:
 
@@ -1460,8 +1481,8 @@ function isPositive(number) {
   return number > 0;
 }
 
-alert(arr.every(isPositive)); // false, не все положительные
-alert(arr.some(isPositive)); // true, есть хоть одно положительное
+console.warn(arr.every(isPositive)); // false, не все положительные
+console.warn(arr.some(isPositive)); // true, есть хоть одно положительное
 ```
 
 ---
