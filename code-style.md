@@ -728,13 +728,6 @@ const luke = {}
 const leia = {}
 [luke, leia].forEach(jedi => jedi.father = 'vader')
 
-// плохо - выбрасывает исключение
-const reaction = 'No! That's impossible!'
-(async function meanwhileOnTheFalcon() {
-  // переносимся к `leia`, `lando`, `chewie`, `r2`, `c3p0`
-  // ...
-}())
-
 // плохо - возвращает `undefined` вместо значения на следующей строке. Так всегда происходит, когда `return` расположен сам по себе, потому что ASI (Автоматическая Вставка Точки с запятой)!
 function foo() {
   return
@@ -747,13 +740,6 @@ const leia = {};
 [luke, leia].forEach((jedi) => {
   jedi.father = 'vader';
 });
-
-// хорошо
-const reaction = 'No! That's impossible!';
-(async function meanwhileOnTheFalcon() {
-  // переносимся к `leia`, `lando`, `chewie`, `r2`, `c3p0`
-  // ...
-  }());
 
 // хорошо
 function foo() {
