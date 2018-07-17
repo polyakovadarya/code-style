@@ -609,6 +609,8 @@ module.exports = {
     // require camel case names
     camelcase: ['error', { properties: 'never' }],
 
+    "nonblock-statement-body-position": ["error", "beside"],
+
     // require trailing commas in multiline object literals
     // FIXME: warn?
     'comma-dangle': [
