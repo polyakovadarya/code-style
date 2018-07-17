@@ -133,7 +133,6 @@ module.exports = {
 
     // disallow else after a return in an if
     // https://eslint.org/docs/rules/no-else-return
-    // TODO:
     'no-else-return': ['error', { allowElseIf: true }],
 
     // disallow empty destructuring patterns
@@ -392,7 +391,6 @@ module.exports = {
 
     // disallow unnecessary parentheses
     // http://eslint.org/docs/rules/no-extra-parens
-    //FIXME: нужно?
     'no-extra-parens': [
       'warn',
       'all',
@@ -461,7 +459,6 @@ module.exports = {
 
     // enforces no braces where they can be omitted
     // http://eslint.org/docs/rules/arrow-body-style
-    // TODO: enable requireReturnForObjectLiteral?
     'arrow-body-style': [
       'error',
       'as-needed',
@@ -611,8 +608,10 @@ module.exports = {
 
     "nonblock-statement-body-position": ["error", "beside"],
 
+    "spaced-comment": ["error", "always", { "exceptions": ["-", "+", "-+", "*"] }],
+
     // require trailing commas in multiline object literals
-    // FIXME: warn?
+    // FIXME: error?
     'comma-dangle': [
       'warn',
       {
