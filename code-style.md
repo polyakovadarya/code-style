@@ -1,6 +1,5 @@
-<!-- # code-style ![js](img/js.svg) -->
+
 <img src="img/js.svg" alt="js" width="150px"/>
-<!-- <link rel="stylesheet" type="text/css" media="all" href="css/style.css" /> -->
 
 Авторы: [Георгий Грошев](https://github.com/eclegend), [Илья Назаров](https://github.com/ilich-x)
 
@@ -1115,7 +1114,6 @@ function sayHi(name) {
 Это обеспечивает удобство чтения и поддержки кода.
 >eslint: [`max-len`](https://eslint.org/docs/rules/max-len.html)
 
-TODO: добавить анимацию с промисами в качестве примеров
 ```javascript
 // плохо
 const foo = jsonData && jsonData.foo && jsonData.foo.bar && jsonData.foo.bar.baz && jsonData.foo.bar.baz.quux && jsonData.foo.bar.baz.quux.xyzzy;
