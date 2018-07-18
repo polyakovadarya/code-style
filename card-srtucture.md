@@ -9,6 +9,7 @@
   * [.graph](#.graph)
   * [.js](#.js)
   * [.scss](#.scss)
+  * [Дополнительная информация]
 
 # Общая структура
 ## Карточка
@@ -56,7 +57,7 @@ content-{имя_проекта}/
 # _card.json
 `<номер карточки>_card.json` - файл содержит имя карточки, чанки, генерации, ссылки на скрипты по чанкам и др.
 
-```d
+```json
 // 11449_card.json
 {
   "name_ru": "temp",
@@ -81,7 +82,7 @@ content-{имя_проекта}/
     {
       "script": 17609,
       "amount": 1,
-      "strategy": "stack_adaptive",
+      "strategy": "stack_adaptive", 
       "stack_adaptive_beads": 1, // необязательный параметр
       "generations": {
         "stack": [
@@ -102,6 +103,13 @@ content-{имя_проекта}/
     ...
   ],
   "compiler_deps_version": "v4"
+}
+```
+
+Все возможные стратегии: 
+```json
+{
+"strategy": ["stack","stack_adaptive",  "stack_adaptive_with_variations","strategy_fix_mistakes","shuffle","increasing_stack"]
 }
 ```
 
@@ -153,7 +161,21 @@ content-{имя_проекта}/
 }
 ```
 # graph
+```
+script_17676-->
+init-->
+render-->
+start-->
+continue-->
+deinit-->
+the_end();
+```
 
+TODO: fork, join, next(), task={}, delay
+
+
+# .js
+TODO: что то, хз что, все свзязано с графом
 
 * [Шаг `init`. Инициализация](#Шаг-init-Инициализация)
 * [Шаг `render`. Рендеринг](#Шаг-render-Рендеринг)
@@ -176,6 +198,7 @@ the_end();
 ```
 ---
 ## Шаг `init`. Инициализация
+
 Все инстансы и `jQuery-элементы` создаются в шаге `init`.
 
 Отделяем инстансы компонентов от `jQuery`-элементов. Записываем все инстансы компонентов в переменную `this.com`, а `jQuery`-элементы в `this.dom`. Так нам всегда будет видно в коде, к какой именно сущности мы обращаемся.
@@ -184,7 +207,7 @@ the_end();
 
 Иногда для некоторых компонетов и методов (`this.tutor.speaker()`, `$$.Dragger()`) требуется наличие в DOM-е передаваемых им элементов в отрендеренном состоянии, для рассчета их позиций (что не очень хорошо), поэтому создание этих элементов может происходить в других шагах после шага `render` или в самом шаге `render`.
 
-> Переменная `this.salt` хранит в себе генерации из файла `_card.json`
+Переменная `this.salt` хранит в себе генерации из файла `_card.json`
 ```javascript
 // init
 $$.Script.prototype.init = function(cb) {
@@ -265,12 +288,5 @@ $$.Script.prototype.deinit = function(cb) {
 };
 ```
 
-## offtop
-
-TODO: fork, join, next(), task={}, delay
-
-
-# .js
-TODO: что то, хз что, все свзязано с графом
 # .scss
 TODO: ASSET_PATH, &{}
