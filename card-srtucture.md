@@ -57,23 +57,23 @@ content-{имя_проекта}/
 `<номер карточки>_card.json` - файл содержит имя карточки, чанки, генерации, ссылки на скрипты по чанкам и др.
 
 ```json
+// 11449_card.json
 {
   "name_ru": "temp",
   "player": "/players/player-1",
   "supports": {
     "sound": "v2",
-    "beads": "v4",
+    "beads": "v4", // версия бусин
     "interbeads_congrat": "v1"
   },
-  "progress": "beads",
+  "progress": "beads", // прогресс измеряется в бусинах
   "chunks": [
     {
       "script": 17655,
       "amount": 1,
       "strategy": "stack",
       "generations": [
-        {
-        }
+        {}
       ]
     },
     {
@@ -102,12 +102,7 @@ content-{имя_проекта}/
       ]
     }
   ],
-  "compiler_deps_version": "v4",
-  "require": [
-    "/components/vendor/react/16.1.0",
-    "/components/vendor/react-dom/16.1.0",
-    "/components/vendor/styled-components/3.1.6"
-  ]
+  "compiler_deps_version": "v4"
 }
 ```
 
