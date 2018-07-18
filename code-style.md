@@ -223,7 +223,9 @@ this.var = {
 };
 ```
 ---
-TODO:
+
+[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
+
 ```javascript
 // плохо
 const arr = [
@@ -611,7 +613,7 @@ function make(tag) {
 # Запятые
 
 Не начинайте строку с запятой. 
->eslint: comma-style
+>eslint: [comma-style](https://eslint.org/docs/rules/comma-style#comma-style-comma-style)
 
 ```javascript
 // плохо
@@ -630,7 +632,7 @@ const story = [
 ```
 Добавляйте висячие запятые. 
 Такой подход дает понятную разницу при просмотре изменений. Кроме того, транспиляторы типа Babel удалят висячие запятые из собранного кода, поэтому вы можете не беспокоиться о проблемах в старых браузерах.
->eslint: comma-dangle
+>eslint: [comma-dangle](https://eslint.org/docs/rules/comma-dangle#require-or-disallow-trailing-commas-comma-dangle)
 
 ```diff
 // плохо - git diff без висячей запятой
@@ -713,7 +715,9 @@ createHero(
   ...heroArgs
 );
 ```
+
 [<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
+
 # Точка с запятой
 Когда JavaScript встречает перенос строки без точки с запятой, он ипользует правило под названием [Автоматическая Вставка Точки с запятой (Automatic Semicolon Insertion)](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion), чтобы определить, стоит ли считать этот перенос строки как конец выражения и (как следует из названия) поместить точку с запятой в вашем коде до переноса строки. Однако, ASI содержит несколько странных форм поведения, и ваш код может быть сломан, если JavaScript неверно истолкует ваш перенос строки. Явное завершение ваших выражений и настройка вашего линтера для улавливания пропущенных точек с запятыми помогут вам предотвратить возникновение проблем.
 
@@ -743,7 +747,9 @@ function foo() {
   return 'search your feelings, you know it to be foo';
 }
 ```
+
 [<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
+
 # Стиль регистра: CamelCase.
 
 
@@ -752,9 +758,10 @@ function foo() {
 В мире JS везде стандартом является [CamelCase](https://ru.wikipedia.org/wiki/CamelCase) регистр. Это можно увидеть, например, в спецификациях [ECMAScript](https://www.ecma-international.org/ecma-262/)-а и [DOM](https://www.w3.org/TR/dom/)-а.
 
 Стандартные методы `this.tutor.play_button(), $$.scene__draw()` и методы компонентов остаются как есть.
-> eslint: [`camelcase`](https://eslint.org/docs/rules/camelcase.html)
-Пример:
 
+> eslint: [`camelcase`](https://eslint.org/docs/rules/camelcase.html)
+
+Пример:
 ```javascript
 // Плохо
 $$.Script.prototype.init_dragger = function() {...};
@@ -1531,7 +1538,7 @@ switch (foo) {
 # Приведение типов
 Выполняйте приведение типов в начале инструкции.
 * Строки
->eslint: no-new-wrappers
+>eslint: [no-new-wrappers](https://eslint.org/docs/rules/no-new-wrappers#disallow-primitive-wrapper-instances-no-new-wrappers)
 ```javascript
 // => this.reviewScore = 9;
 
@@ -1548,7 +1555,8 @@ const totalScore = this.reviewScore.toString(); // нет гарантии чт�
 const totalScore = String(this.reviewScore);
 ```
 * Числа: Используйте `Number` и `parseInt` с основанием системы счисления. 
->eslint: radix no-new-wrappers
+>eslint: [radix](https://eslint.org/docs/rules/radix#require-radix-parameter-radix) [no-new-wrappers](https://eslint.org/docs/rules/no-new-wrappers#disallow-primitive-wrapper-instances-no-new-wrappers)
+
 ```javascript
 const inputValue = '4';
 
@@ -1571,7 +1579,7 @@ const val = Number(inputValue);
 const val = parseInt(inputValue, 10);
 ```
 * Логические типы
-> eslint: no-new-wrappers
+> eslint: [no-new-wrappers](https://eslint.org/docs/rules/no-new-wrappers#disallow-primitive-wrapper-instances-no-new-wrappers)
 
 ```javascript
 const age = 0;
