@@ -1115,7 +1115,6 @@ function sayHi(name) {
 Это обеспечивает удобство чтения и поддержки кода.
 >eslint: [`max-len`](https://eslint.org/docs/rules/max-len.html)
 
-TODO: добавить анимацию с промисами в качестве примеров
 ```javascript
 // плохо
 const foo = jsonData && jsonData.foo && jsonData.foo.bar && jsonData.foo.bar.baz && jsonData.foo.bar.baz.quux && jsonData.foo.bar.baz.quux.xyzzy;
