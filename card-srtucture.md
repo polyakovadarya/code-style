@@ -319,9 +319,12 @@ $$.Script.prototype.deinit = function(cb) {
 Теперь можно дополнять граф, изходя из поставленных целей.
 При загрузке чанка в браузере, мы увидим кнопку `play_button`, которая вызывается в методе `start-->`, а значит все `шаги` до этого уже выполнились.
 
+---
+**`this.tutor.play_button()` - может отличаться в зависимости от проекта**
 
 ![play_button](img/play_button.png)
 
+---
 ```
 script_17676-->
 init-->
@@ -340,26 +343,62 @@ init-->
 render-->
 start-->
 continue-->
-fork(1)-->
+
+fork(1)--> // запуск паралельных процессов (драг)
   drag(drag|.plate)-->
-    animate_after_drag-->
-    join(1);
-fork(1)-->
+    animateAfterDrag-->
+    join(1); // переход в join
+fork(1)--> // запуск паралельных процессов (клик)
   click(cl1|dom.button)-->
-    join(1);
+    join(1); // переход в join
+
 join(1)-->
-  checkAction-[click]->
-    checkDrag-[wrong:err]->
-      hightlight-->
-      fork(1);
+// проверяем что произашло
+  checkAction-[click]-> // клик по кнопке 'готово'
+    checkDrag-[wrong:err]-> // проверяем ответ, ':err' - делает ошибку (откат бусины)
+      hightlight--> // какая-то реакция на ошибку
+      fork(1); // возврат к драгу и клику
     checkDrag-[right]->
       animateScene-->
+      delay(1000)--> // метод графа
       deinit;
   checkAction-[drag]->
     fork(1);
 deinit-->
-the_end();
+the_end(); // метод графа
 ```
+```javascript
+// checkAction
+$$.Script.prototype.checkAction = function(cb) {
+  cb($(this.obj).hasClass('.button-basic') ? 'click' : 'drag');
+};
+// checkDrag
+$$.Script.prototype.checkDrag = function(cb) {
+  let answer = false;
+  if (...) {
+    answer = true;
+  }
+  cb(answer ? 'right' : 'wrong');
+};
+```
+В `cb()` можно передавать любые строки, что позволяет сократить код.
 
+```javascript
+// checkDrag
+$$.Script.prototype.checkDrag = function(cb) {
+  let answer = false;
+  if (...) {
+    answer = true;
+  }
+  cb(String(answer));
+};
+```
+Тогда в графе это должно быть так:
+```
+checkDrag-[false:err]->
+  ...
+checkDrag-[true]->
+  ...
+```
 # .scss
 TODO: ASSET_PATH, &{}
