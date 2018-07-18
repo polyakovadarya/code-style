@@ -56,7 +56,7 @@ content-{имя_проекта}/
 # _card.json
 `<номер карточки>_card.json` - файл содержит имя карточки, чанки, генерации, ссылки на скрипты по чанкам и др.
 
-```json
+```d
 // 11449_card.json
 {
   "name_ru": "temp",
@@ -69,38 +69,37 @@ content-{имя_проекта}/
   "progress": "beads", // прогресс измеряется в бусинах
   "chunks": [
     {
-      "script": 17655,
-      "amount": 1,
-      "strategy": "stack",
+      "script": 17655, // номер скрипта
+      "amount": 1, // количество бусин необходмое для прохождения чанка (при правильном ответе бусина перекатывается направо)
+      "strategy": "stack", // стратегия по которой осуществляется переход к следующей генерации
+      // "stack" - выглядит как массив объектов
       "generations": [
-        {}
+        {"expr": "4+5"},
+        {"expr": "3+8"}
       ]
     },
     {
       "script": 17609,
       "amount": 1,
-      "strategy": "stack",
-      "generations": [
-        {}
-      ],
-      "without_penalty": false
+      "strategy": "stack_adaptive",
+      "stack_adaptive_beads": 1, // необязательный параметр
+      "generations": {
+        "stack": [
+          "1",
+          "2"
+        ],
+        "values": {
+          "1":[
+            {}
+          ],
+          "2":[
+            {}
+          ]
+        }
+      },
+      "without_penalty": true // необязательный параметр делает бусину при ошибке неоткатной ( по договоренности с методистом ) по умолчанию false
     },
-    {
-      "script": 17657,
-      "amount": 1,
-      "strategy": "stack",
-      "generations": [
-        {}
-      ]
-    },
-    {
-      "script": 17658,
-      "amount": 1,
-      "strategy": "stack",
-      "generations": [
-        {}
-      ]
-    }
+    ...
   ],
   "compiler_deps_version": "v4"
 }
