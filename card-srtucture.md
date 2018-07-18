@@ -56,61 +56,58 @@ content-{имя_проекта}/
 # _card.json
 `<номер карточки>_card.json` - файл содержит имя карточки, чанки, генерации, ссылки на скрипты по чанкам и др.
 
-```d
+```json
 {
-  "name_ru": "Прибавляем круглое число с помощью кубиков", // Имя карточки из cms.uchi.ru
-  "progress": "beads",  // Прогресс измеряется в бусинах
-  // Описание структуры каждого чанка
-  // Чанк 1
+  "name_ru": "temp",
+  "player": "/players/player-1",
+  "supports": {
+    "sound": "v2",
+    "beads": "v4",
+    "interbeads_congrat": "v1"
+  },
+  "progress": "beads",
   "chunks": [
     {
-      // Скрипт в котором реализована логика чанка
-      "script": 1234,
-      // Количество бусин (указывается в прототипе карточки или узнается у методиста)
+      "script": 17655,
       "amount": 1,
-      // Стратегия выбора генераций, FIXME: []
       "strategy": "stack",
-      // Описание генераций
       "generations": [
         {
-          "task": "35+40"
-        },
-        {
-          "task": "47+20"
-        },
-        {
-          "task": "23+50"
         }
       ]
     },
-    // Чанк 2
     {
-      "script": 1235,
-      "amount": 3,
+      "script": 17609,
+      "amount": 1,
       "strategy": "stack",
       "generations": [
-        {
-          "task": "62+30" // сами генерации
-        },
-        {
-          "task": "18+60" // сами генерации
-        },
-        {
-          "task": "24+40" // сами генерации
-        },
-        {
-          "task": "43+20" // сами генерации
-        },
-        {
-          "task": "55+30" // сами генерации
-        },
-        {
-          "task": "31+50" // сами генерации
-        }
+        {}
+      ],
+      "without_penalty": false
+    },
+    {
+      "script": 17657,
+      "amount": 1,
+      "strategy": "stack",
+      "generations": [
+        {}
+      ]
+    },
+    {
+      "script": 17658,
+      "amount": 1,
+      "strategy": "stack",
+      "generations": [
+        {}
       ]
     }
   ],
-  "compiler_deps_version": "v4" // версия компилятора
+  "compiler_deps_version": "v4",
+  "require": [
+    "/components/vendor/react/16.1.0",
+    "/components/vendor/react-dom/16.1.0",
+    "/components/vendor/styled-components/3.1.6"
+  ]
 }
 ```
 
