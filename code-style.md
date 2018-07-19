@@ -16,7 +16,6 @@
   - [Запятые](#Запятые)
   - [Точка с запятой](#Точка-с-запятой)
   - [Стиль регистра: CamelCase](#Стиль-регистра-camelcase)
-  - [Объявление переменных](#Объявление-переменных)
 ---
   - [Объявление переменных](#Объявление-переменных)
   - [Объекты](#Объекты)
@@ -1035,7 +1034,7 @@ inbox.filter((msg) => {
 
 ```javascript
 // плохо
-const name = 'Capt. Janeway';
+const name = "Capt. Janeway";
 
 // плохо - литерал шаблонной строки должен содержать интерполяцию или переводы строк
 const name = `Capt. Janeway`;
@@ -1076,7 +1075,7 @@ const errorMessage = `This is a super long error that was thrown because
 ```
 
 ```javascript
-// плохо
+/// плохо
 function sayHi(name) {
   return 'How are you, ' + name + '?';
 }
@@ -1088,7 +1087,7 @@ function sayHi(name) {
 
 // плохо
 function sayHi(name) {
-  return `How are you, ${name}?`;
+  return `How are you, ${ name }?`;
 }
 
 // хорошо
@@ -1302,12 +1301,9 @@ console.log(
   const nextNumber = number + 1;
   return `A string containing the ${nextNumber}.`;
 });
+```
 
-// хорошо
-[1, 2, 3].map((number, index) => ({
-  [index]: number,
-}));
-
+```javascript
 // Неявный возврат с побочными эффектами
 function foo(callback) {
   const val = callback();
