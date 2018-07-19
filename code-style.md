@@ -223,7 +223,7 @@ this.var = {
 ```
 ---
 
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 ```javascript
 // плохо
@@ -377,7 +377,7 @@ if (baz) {
 }
 ```
 
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # Блоки
 
@@ -480,7 +480,7 @@ function dogs(x) {
   }
 }
 ```
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 # Управляющие операторы
 
 Если ваш управляющий оператор (`if`, `while` и т.д.) слишком длинный или превышает максимальную длину строки, то каждое (сгруппированное) условие можно поместить на новую строку. Логический оператор должен располагаться в начале строки.
@@ -540,7 +540,7 @@ if (!isRunning) {
   startRunning();
 }
 ```
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # Коментарии
 
@@ -609,7 +609,7 @@ function make(tag) {
 }
 ```
 
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # Запятые
 
@@ -717,7 +717,7 @@ createHero(
 );
 ```
 
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # Точка с запятой
 Когда JavaScript встречает перенос строки без точки с запятой, он ипользует правило под названием [Автоматическая Вставка Точки с запятой (Automatic Semicolon Insertion)](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion), чтобы определить, стоит ли считать этот перенос строки как конец выражения и (как следует из названия) поместить точку с запятой в вашем коде до переноса строки. Однако, ASI содержит несколько странных форм поведения, и ваш код может быть сломан, если JavaScript неверно истолкует ваш перенос строки. Явное завершение ваших выражений и настройка вашего линтера для улавливания пропущенных точек с запятыми помогут вам предотвратить возникновение проблем.
@@ -749,7 +749,7 @@ function foo() {
 }
 ```
 
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # Стиль регистра: CamelCase.
 
@@ -854,7 +854,7 @@ console.log(c); // throws ReferenceError
 
 
 ---
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 ---
 
@@ -943,7 +943,7 @@ const isJedi = luke.jedi;
 ```
 
 
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 # Массивы
 Для создания массива используйте литеральную нотацию. 
 >eslint: [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor.html)
@@ -1030,7 +1030,7 @@ inbox.filter((msg) => {
   return false;
 });
 ```
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 # Строки
 
 Используйте одинарные кавычки `''` для строк.
@@ -1130,7 +1130,7 @@ const foo = jsonData
 ```
 
 
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # Функции
 
@@ -1257,7 +1257,7 @@ console.log(
   baz,
 );
 ```
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 
 # Стрелочные функции
@@ -1330,7 +1330,7 @@ foo(() => {
 });
 ```
 
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # Инкременты и декременты
 
@@ -1351,7 +1351,7 @@ let num = 1;
 num += 1;
 num -= 1;
 ```
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # Операторы сравнения и равенства
 
@@ -1416,7 +1416,7 @@ if (collection.length > 0) {
 
 > `0` и `1` также приводятся к `boolean` <br> > `0` это `false`, `1` это `true`
 
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # Тернарные операторы
 
@@ -1535,7 +1535,7 @@ switch (foo) {
 }
 ```
 
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # Приведение типов
 Выполняйте приведение типов в начале инструкции.
@@ -1595,7 +1595,7 @@ const hasAge = Boolean(age);
 // отлично
 const hasAge = !!age;
 ```
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # `map,forEach,filter,every/some`
 
@@ -1710,7 +1710,7 @@ console.warn(arr.some(isPositive)); // true, есть хоть одно поло
 
 **UPD: Во многих ситуациях их использование позволяет написать код короче и понятнее, чем обычный перебор через for.**
 
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # Инструменты
 - Редактор
@@ -1747,7 +1747,7 @@ console.warn(arr.some(isPositive)); // true, есть хоть одно поло
 
 Установка линтера **`обязательна`**.
 
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # Полезные ссылки
 - [10 Tips for Javascript Debugging Like a PRO with Console](https://medium.com/appsflyer/10-tips-for-javascript-debugging-like-a-pro-with-console-7140027eb5f6)
@@ -1760,7 +1760,7 @@ console.warn(arr.some(isPositive)); // true, есть хоть одно поло
 - [CoffeeScript Style Guide (Middle_math)](https://github.com/uchiru/content/blob/master/doc/custom/middle_math_mos/style-guide-coffeescript.md)
 - [Таблица типов](img/tableOfTypes.png)
 ---
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> `К оглавлению`](#Содержание)
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
 # Changelog
 * 19.07.2018: stable
