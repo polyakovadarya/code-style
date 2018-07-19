@@ -608,7 +608,9 @@ function make(tag) {
   return element;
 }
 ```
-[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
+
+**[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)**
+
 # Запятые
 
 Не начинайте строку с запятой. 
@@ -1328,6 +1330,7 @@ foo(() => {
 });
 ```
 
+[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
 
 # Инкременты и декременты
 
@@ -1348,6 +1351,7 @@ let num = 1;
 num += 1;
 num -= 1;
 ```
+[<img src="img/right.svg" alt="js" height="10px" width="10px"/> К оглавлению](#Содержание)
 
 # Операторы сравнения и равенства
 
@@ -1734,7 +1738,12 @@ console.warn(arr.some(isPositive)); // true, есть хоть одно поло
 ```
 2. Установите расширение [`ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) в VS Code.
 
-3. Eslint требует наличия конфигурационного файла `.eslintrc.js`. По умолчанию, eslint ожидает размещение данного файла в корне проекта.
+3. Eslint требует наличия конфигурационного файла `.eslintrc.js`. По умолчанию, eslint ожидает размещение данного файла в корне проекта. Но можно указать к нему путь самостоятельно в файле настроек `VS CODE`: 
+```json
+"eslint.options": {
+  "configFile": "/Users/username/work/.eslintrc.js", // пример
+}
+```
 
 Установка линтера **`обязательна`**.
 

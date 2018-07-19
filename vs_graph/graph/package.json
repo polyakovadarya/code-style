@@ -1,0 +1,40 @@
+{
+    "name": "graph",
+    "displayName": "graph",
+    "description": "GRAPH(UCHI.RU) support VS CODE",
+    "version": "0.0.3",
+    "publisher": "Eclegend",
+    "icon": "icon.png",
+    "engines": {
+        "vscode": "^1.18.0"
+    },
+    "categories": [
+        "Languages",
+        "Snippets",
+        "Themes"
+    ],
+    "keywords": [
+        "graph"
+    ],
+    "galleryBanner": {
+        "color": "#C80000",
+        "theme": "dark"
+    },
+    "contributes": {
+        "languages": [{
+            "id": "graph",
+            "aliases": ["GRAPH", "graph"],
+            "extensions": [".graph"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "graph",
+            "scopeName": "source.graph",
+            "path": "./syntaxes/graph.tmLanguage.json"
+        }],
+        "snippets": [{
+            "language": "graph",
+            "path": "./snippets/snippets.json"
+        }]
+    }
+}

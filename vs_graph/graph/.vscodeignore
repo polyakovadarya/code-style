@@ -1,0 +1,8 @@
+vsc-extension-quickstart.md
+.vscode/**
+typings/**
+test/**
+.editorconfig
+.gitignore
+.travis.yml
+jsconfig.json

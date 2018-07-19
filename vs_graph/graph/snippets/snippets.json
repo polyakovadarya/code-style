@@ -1,0 +1,58 @@
+{
+  "(step: description)": {
+    "prefix": "step",
+    "body": ["(${1:step}: ${2:description})-$3->$4"],
+    "description": ""
+  },
+  "delay(1000)": {
+    "prefix": "delay",
+    "body": ["delay(${1:1000})-->$2"],
+    "description": ""
+  },
+  "include()": {
+    "prefix": "include",
+    "body": ["include(${1:name})-->$2"],
+    "description": ""
+  },
+  "click()": {
+    "prefix": "click",
+    "body": ["click(${1:step}|${2:selector})-->$3"],
+    "description": ""
+  },
+  "drag()": {
+    "prefix": "drag",
+    "body": ["drag(${1:step}|${2:selector})-->$3"],
+    "description": ""
+  },
+  "read_input()": {
+    "prefix": "read_input",
+    "body": ["read_input(${1:name}|${2:selector})-->$3"],
+    "description": ""
+  },
+  "read_quill()": {
+    "prefix": "read_quill",
+    "body": ["read_quill(${1:name}|${2:selector})-->$3"],
+    "description": ""
+  },
+  "fork()-->": {
+    "prefix": "fork",
+    "body": ["fork(${1:name})-->$2"],
+    "description": ""
+  },
+  "fork();": {
+    "prefix": "fork",
+    "body": ["fork(${1:name});"],
+    "description": ""
+  },
+  "join()-->": {
+    "prefix": "join",
+    "body": ["join(${1:name})-->$2"],
+    "description": ""
+  },
+  "join();": {
+    "prefix": "join",
+    "body": ["join(${1:name});"],
+    "description": ""
+  }
+}
+
