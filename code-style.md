@@ -222,9 +222,6 @@ this.var = {
 };
 ```
 ---
-
-### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
-
 ```javascript
 // плохо
 const arr = [
