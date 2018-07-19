@@ -8,8 +8,10 @@
   * [_card.json](#_card.json)
   * [.json](#.json)
   * [.graph](#.graph)
-  * [.js](#.js)
-  * [.scss](#.scss)
+  * [.graph && .js](#graph-&&-.js)
+  * [.js && .css.scss](#.js-&&-.css.scss)
+  * [.css.scss](#.css.scss)
+  * TODO: описать this.tutor
   * [Дополнительная информация]
 
 # Общая структура
@@ -183,8 +185,8 @@ script_17676-->
 init-->
 render-->
 start-->
-click(clickOnBird|.bird)-->
 continue-->
+click(clickOnBird|.bird)-->
 deinit-->
 the_end();
 ```
@@ -400,6 +402,61 @@ checkDrag-[false:err]->
 checkDrag-[true]->
   ...
 ```
+
+# .js && .css.scss
+TODO: написать объяснения и вводное
+```javascript
+this.dom = {
+  scene: $.div('scene'),
+  redBlock: $.div('red-block'), // переменная записана в camalCase, а класс
+}
+```
+```scss
+& {
+  .red-block {
+    position: absolute;
+    top: 10px;
+    left: 124px;
+    font-size: 32px;
+    opacity: 1;
+  }
+}
+```
+---
+
+```javascript
+this.dom = {
+  scene: $.div('scene'),
+  redBlock: $.div('red-block'), // переменная записана в camalCase, а класс
+  miniRedBlocks: _.range(5).map(i=> $.div(`mini-red-block-${i}`)),
+}
+...
+this.place.append(
+  this.dom.scene.append(
+    this.dom.redBlock.append(
+      ...this.dom.miniRedBlocks
+    ),
+  )
+)
+```
+```scss
+& {
+  .red-block {
+    position: absolute;
+    ...
+    .mini-red-block {
+      &-0 {
+        ...
+      }
+      &-1 {
+        ...
+      }
+    }
+  }
+}
+```
+
+
 # .scss
 TODO: ASSET_PATH, &{}
 
