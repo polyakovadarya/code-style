@@ -217,7 +217,6 @@ the_end();
 * [Шаг `continue`. Продолжение](#Шаг-continue-Продолжение)
 * [Шаг `deinit`. Окончание](#Шаг-deinit-Окончание)
 * [Работа с графом](#Работа-с-графом)
-* [OFFTOP](#offtop)
 
 
 Вот так выглядит сгенерированный файл `17676.graph`. Номер скрипта может быть любым. В данном случае это `17676`. Самая первая строчка `script_17676-->` очень важна и не стоит ее удалять.
@@ -499,7 +498,6 @@ this.place.append(
 ```
 
 # .scss
-TODO: ASSET_PATH, &{}
 
 Все `scss` файлы у нас называются `.css.scss` и выглядит он вот так: 
 
@@ -542,10 +540,6 @@ TODO: ASSET_PATH, &{}
 
 ---
 
-
-
----
-
 Названия `css` анимаций нужно указывать с префиксом **`__U_`**. В этом случае в название подставится `ID` скрипта, что позволит избежать конфликтов с одноименными анимациями.
 
 ```scss
@@ -553,11 +547,11 @@ TODO: ASSET_PATH, &{}
   //...
 
   @at-root {
-    @include keyframes(__U_fadeRight){
+    @include keyframes(__U_fadeRight) {
       from { transform: translateX(50px); opacity: 0; }
       to { transform: translateX(0); opacity: 1; }
     }
-    @include keyframes(__U_pulse){
+    @include keyframes(__U_pulse) {
       0%, 100% { transform: scale(1); }
       65% { transform: scale(1.25); }
     }
@@ -573,5 +567,6 @@ TODO: ASSET_PATH, &{}
 * this.tutor.speaker()
 * this.tutor.locale - хранит текущую локаль для чанка
 
+# Дополнительная информация
 
-[tutor](https://github.com/uchiru/content-high-school/blob/master/doc/high_school/content/tutor.md)
+[Более полная документация по `this.tutor`](https://github.com/uchiru/content-high-school/blob/master/doc/high_school/content/tutor.md)
