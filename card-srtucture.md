@@ -497,7 +497,7 @@ this.place.append(
 }
 ```
 
-# .scss
+# .css.scss
 
 Все `scss` файлы у нас называются `.css.scss` и выглядит он вот так: 
 
