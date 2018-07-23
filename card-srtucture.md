@@ -561,11 +561,11 @@ this.place.append(
 
 # this.tutor
 
-* this.tutor.t('') - вынимает текстовую константу из файла `<номер скрипта>.json`
-* this.tutor.wrong() - делает ошибку (откат бусины)
-* this.tutor.the_end() - завершает чанк
-* this.tutor.speaker()
-* this.tutor.locale - хранит текущую локаль для чанка
+* `this.tutor.t('')` - вынимает текстовую константу из файла `<номер скрипта>.json`
+* `this.tutor.wrong()` - делает ошибку (откат бусины)
+* `this.tutor.the_end()` - завершает чанк
+* `this.tutor.speaker()` - TODO: написать
+* `this.tutor.locale` - хранит текущую локаль для чанка
 
 # Дополнительная информация
 
