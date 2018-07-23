@@ -525,6 +525,8 @@ TODO: ASSET_PATH, &{}
 ]
 ```
 
+Вместо `url('')` для картинок мы используем функцию `ASSET_PATH('')`, это нужно для компилятора.
+
 ```scss
 // .css.scss
   @include scene();
@@ -540,7 +542,7 @@ TODO: ASSET_PATH, &{}
 
 ---
 
-Вместо `url('')` для картинок мы используем функцию `ASSET_PATH('')`, это нужно для компилятора.
+
 
 ---
 
@@ -565,11 +567,11 @@ TODO: ASSET_PATH, &{}
 
 # this.tutor
 
-* this.tutor.t('')
-* this.tutor.wrong()
-* this.tutor.the_end()
+* this.tutor.t('') - вынимает текстовую константу из файла `<номер скрипта>.json`
+* this.tutor.wrong() - делает ошибку (откат бусины)
+* this.tutor.the_end() - завершает чанк
 * this.tutor.speaker()
-* this.tutor.locale
+* this.tutor.locale - хранит текущую локаль для чанка
 
 
 [tutor](https://github.com/uchiru/content-high-school/blob/master/doc/high_school/content/tutor.md)

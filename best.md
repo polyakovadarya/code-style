@@ -208,3 +208,192 @@ $sprites: (
   animation: $funk;
 }
 ```
+
+
+```scss
+@at-root {
+    @-webkit-keyframes shake {
+      0% {
+        transform: rotate(0deg);
+      }
+      10% {
+        transform: rotate(4deg);
+      }
+      20% {
+        transform: rotate(0deg);
+      }
+      30% {
+        transform: rotate(4deg);
+      }
+      40% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(4deg);
+      }
+      60% {
+        transform: rotate(0deg);
+      }
+      70% {
+        transform: rotate(4deg);
+      }
+      80% {
+        transform: rotate(0deg);
+      }
+      90% {
+        transform: rotate(4deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+    @-moz-keyframes shake {
+      0% {
+        transform: rotate(0deg);
+      }
+      10% {
+        transform: rotate(4deg);
+      }
+      20% {
+        transform: rotate(0deg);
+      }
+      30% {
+        transform: rotate(4deg);
+      }
+      40% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(4deg);
+      }
+      60% {
+        transform: rotate(0deg);
+      }
+      70% {
+        transform: rotate(4deg);
+      }
+      80% {
+        transform: rotate(0deg);
+      }
+      90% {
+        transform: rotate(4deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+    @-o-keyframes shake {
+      0% {
+        transform: rotate(0deg);
+      }
+      10% {
+        transform: rotate(4deg);
+      }
+      20% {
+        transform: rotate(0deg);
+      }
+      30% {
+        transform: rotate(4deg);
+      }
+      40% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(4deg);
+      }
+      60% {
+        transform: rotate(0deg);
+      }
+      70% {
+        transform: rotate(4deg);
+      }
+      80% {
+        transform: rotate(0deg);
+      }
+      90% {
+        transform: rotate(4deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+    @keyframes shake {
+      0% {
+        transform: rotate(0deg);
+      }
+      10% {
+        transform: rotate(4deg);
+      }
+      20% {
+        transform: rotate(0deg);
+      }
+      30% {
+        transform: rotate(4deg);
+      }
+      40% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(4deg);
+      }
+      60% {
+        transform: rotate(0deg);
+      }
+      70% {
+        transform: rotate(4deg);
+      }
+      80% {
+        transform: rotate(0deg);
+      }
+      90% {
+        transform: rotate(4deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  }
+```
+
+
+
+
+```
+initDragger-->
+  fork(1)-->
+      addShakePlate-->
+      drag(drag_auto|.plate)-->
+      animate_after_drag-->
+      join(1);
+```
+
+```
+
+// addShakePlate
+$$.Script.prototype.addShakePlate = async function (cb) {
+  setTimeoutOrig(() => {
+    this.intervalId = setInterval(() => {
+      // if some plate was already placed, don't animate the shaking
+      const draggedPlates = this.com.dragger.plates.filter((plate) => plate.hasClass('dragged'));
+      if (draggedPlates.length > 0) {
+        clearInterval(this.intervalId);
+      } else {
+        this.com.dragger.plates.forEach((plate) => {
+          plate.addClass('shake');
+          setTimeoutOrig(() => {
+            plate.removeClass('shake');
+          }, 1000);
+        });
+      }
+    }, this.intervalDuration);
+  }, 4000);
+  cb();
+
+
+  // this.com.dragger.plates.forEach((plate) => {
+  //   if (!plate.hasClass('dragged')) {
+  //     plate.addClass('shake-anim');
+  //   }
+  // });
+};
+```

@@ -5,6 +5,9 @@
 
 # Содержание
 
+<details open="JavaScript"><summary>JavaScript</summary>
+
+---
 - [Предисловие](#Предисловие)
   * [Цель](#Цель)
   * [Профит](#Профит)
@@ -30,6 +33,19 @@
 
 - [Map, ForEach, Filter, every/some](#Map,ForEach,Filter,every/some)
 ---
+</details>
+
+<details open="JavaScript"><summary>SCSS</summary>
+
+- [Миксины](#SCSS)
+- [Отступы](#Отступы)
+- [Вложенность](#Вложенность)
+- [Форматирование](#Форматирование)
+
+</details>
+
+---
+
 - [Инструменты](#Инструменты)
 - [Полезные ссылки](#Полезные-ссылки)
 - [Список литературы](#Список-литературы)
@@ -1705,6 +1721,88 @@ console.warn(arr.some(isPositive)); // true, есть хоть одно поло
 ---
 
 **UPD: Во многих ситуациях их использование позволяет написать код короче и понятнее, чем обычный перебор через for.**
+
+### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
+
+# SCSS
+
+В `js` и `scss` мы не используем **`#id`** для идентификации, вместо этого, используйте классы.
+Это связано с тем, что `id` элемента может уже существовать где-то выше и наш `#id` возможно сможет его переписать.
+
+## Миксины
+
+---
+
+`@mixin` и `@include` стилей обычно подключаются вверху файла `.css.scss`
+
+```scss
+& {
+  @mixin animations ($funk... ) {
+    -webkit-animation: $funk;
+    -moz-animation: $funk;
+    -o-animation: $funk;
+    animation: $funk;
+  }
+  @include scene();
+  @include title();
+  @include button();
+  @include mathquill();
+```
+
+## Отступы
+
+---
+Ширина отступов **`2 пробела`**
+
+```scss
+& {
+  //...
+  @include mathquill();
+  // ...
+  .math-container {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 343px;
+  }
+}
+```
+
+## Вложенность
+
+---
+
+Вложенность должна быть не более 3х селекторов
+
+```scss
+& {
+  // ...
+  .math-container {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 343px;
+    .math {
+      display: inline-block;
+      vertical-align: middle;
+      .sign {
+        //...
+      }
+    }
+  }
+}
+```
+
+## Форматирование
+
+- Используйте // для блоков комментариев (вместо / * * /);
+  
+- Избегайте указания единиц для нулевых значений, например, `margin: 0`; вместо `margin: 0px`;
+  
+- Избегайте `!important` и больших значений `z-index`
+
+---
+
 
 ### [<img src="img/arrow_up.svg" alt="js" height="15px" width="20px"/> К оглавлению](#Содержание)
 
