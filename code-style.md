@@ -1814,7 +1814,7 @@ console.warn(arr.some(isPositive)); // true, есть хоть одно поло
   Для разработки нет ограничений в выборе редактора, но мы советуем использовать [`VS Code`](https://code.visualstudio.com/).
   
   Рекомендуемые расширения:
-  - graph(локальное, устанавливается вручную, путем копирования папки) подсветка синтаксиса для `.graph` файлов, сниппеты;
+  - `graph`(локальное, устанавливается вручную, путем копирования папки в `~/.vscode/extensions/`) подсветка синтаксиса для `.graph` файлов, сниппеты;
   - [`JavaScript (ES6) code snippets`](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets);
   - [`ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) (для работы нужен конфиг с правилами);
   - [`stylelint`](https://marketplace.visualstudio.com/items?itemName=shinnn.stylelint) (для работы нужен конфиг с правилами);
