@@ -3,9 +3,9 @@
   ---
   * [Spread](#Spread)
   * [Деструктуризация](#Деструктуризация)
-  * [Оператор `**`](#Оператор-**)
+  * [Оператор `**`](#Оператор)
   * [Вспомогательные функции](#Вспомогательные-функции)
-  * [Анимации]($Анимации)
+  * [Анимации](#Анимации)
   * [SCSS](#SCSS)
     * [Перебор](#Перебор)
     * [ShakePlates](#ShakePlates)
@@ -125,25 +125,49 @@ const binary = 2 ** 10;
 $element.velocity({ top: 50 }, 1000, cb); // jq-style
 
 $.Velocity(el, { opacity: 1 }); // возвращает промис, удобно использовать в последовательных анимациях ипользуя `async await` или чейн промисов `Promise().then()`
+
+```
+Полная документация с примерами на [Velocity](http://velocityjs.org/).
+
+# Async/Await
+
+`Async/Await` - это долгожданная функция `JavaScript`, которая делает работу с асинхронными функциями более приятной и понятной. Он построен поверх `Promises` и совместим со всеми существующими `API`-интерфейсами на основе `Promise`.
+```javascript
+// пример
+$$.Script.prototype.animationTime = async function(cb) {
+  await this.com.button.animateSuccess({ duration: 1000, clearAuto: true });
+  await Promise.all([
+    new Promise(resolve => {
+      $element1.velocity({ top: 50 }, 1000, resolve),
+    }),
+    new Promise(resolve => {
+      $element2.velocity({ top: 50 }, 1000, resolve),
+    }),
+    new Promise(resolve => {
+      $element3.velocity({ top: 50 }, 1000, resolve),
+    }),
+  ])
+  cb();
+};
+
 ```
 
-Полная документация с примерами на [Velocity](http://velocityjs.org/).
 
 >` TODO: где то должно быть описание, то что свои функции заносим в $$`
 
 <!-- ## Полезные функции при работе с анимациями для частых кейсов -->
 # Вспомогательные функции
 
-```javascript
-// без покдлючения дополнительных библитек, можно вызывать вспомогательные функции находящиеся в FIXME:
+Без покдлючения дополнительных библитек, можно вызывать вспомогательные функции находящиеся в `"/components/system/kernel/{версия}"`
 
+```javascript
 // узнать позиционирвание jq-объекта относительно другого
 $$.offset(host, element) // {top: 00px, left: 00px};
 
 // пример
 $$.offset(this.dom.scene, this.dom.apple)
-
 ```
+
 Полезные функции:
 
 ```javascript
@@ -226,8 +250,18 @@ $sprites: (
 ```
 
 ## ShakePlates
-
+[Пример в CMS](https://math2-cms.uchi.ru/ru/cards/6136?chunk=3&sound=on_demand&version=116934)
 ```sass
+
+.shake {
+  animation-name: shake;
+  animation-duration: 0.6s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
 @at-root {
     @-webkit-keyframes shake {
       0% {
@@ -372,8 +406,7 @@ $sprites: (
   }
 ```
 
-
-
+`.graph`
 
 ```
 initDragger-->
@@ -384,10 +417,11 @@ initDragger-->
     join(1);
 ```
 
-```javascript
+`.js`
 
+```javascript
 // addShakePlate
-$$.Script.prototype.addShakePlate = async function (cb) {
+$$.Script.prototype.addShakePlate = function (cb) {
   setTimeoutOrig(() => {
     this.intervalId = setInterval(() => {
       // if some plate was already placed, don't animate the shaking
