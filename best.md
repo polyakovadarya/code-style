@@ -1,17 +1,17 @@
 
   BESTPRACTICE
-  ---
-  * [Spread](#Spread)
+  ===
+  * [Оператор spread](#Оператор-spread)
   * [Деструктуризация](#Деструктуризация)
-  * [Оператор `**`](#Оператор)
+  * [Оператор `**`](#Оператор-)
   * [Вспомогательные функции](#Вспомогательные-функции)
   * [Анимации](#Анимации)
-  * [SCSS](#SCSS)
+  * [SCSS](#scss)
     * [Перебор](#Перебор)
-    * [ShakePlates](#ShakePlates)
+    * [ShakePlates](#shakeplates)
   * Promise
 
-  # Spread
+  # Оператор spread
   Для преобразования массиво-подобного объекта в массив используйте оператор расширения `...` вместо [`Array.from`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from).
 
 ```javascript
@@ -420,14 +420,22 @@ initDragger-->
 `.js`
 
 ```javascript
+$$.Script.prototype.init = function (cb) {
+  this.var={
+    intervalId: null,
+    intervalDuration: 4000,
+  };
+  cb();
+};
+
 // addShakePlate
 $$.Script.prototype.addShakePlate = function (cb) {
   setTimeoutOrig(() => {
-    this.intervalId = setInterval(() => {
+    this.var.intervalId = setInterval(() => {
       // if some plate was already placed, don't animate the shaking
       const draggedPlates = this.com.dragger.plates.filter((plate) => plate.hasClass('dragged'));
       if (draggedPlates.length > 0) {
-        clearInterval(this.intervalId);
+        clearInterval(this.var.intervalId);
       } else {
         this.com.dragger.plates.forEach((plate) => {
           plate.addClass('shake');
@@ -436,7 +444,7 @@ $$.Script.prototype.addShakePlate = function (cb) {
           }, 1000);
         });
       }
-    }, this.intervalDuration);
+    }, this.var.intervalDuration);
   }, 4000);
   cb();
 };
