@@ -1,5 +1,5 @@
 
-  BESTPRACTICE
+  BEST PRACTICE
   ===
   * [Оператор spread](#Оператор-spread)
   * [Деструктуризация](#Деструктуризация)
