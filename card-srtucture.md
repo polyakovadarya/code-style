@@ -8,12 +8,12 @@
     * [Карточка](#Карточка)
     * [Чанк](#Чанк)
 ---
-  * [_card.json](#_card.json)
-  * [.json](#.json)
-  * [.graph](#.graph)
-  * [.graph && .js](#graph-&&-.js)
-  * [.js && .css.scss](#.js-&&-.css.scss)
-  * [.css.scss](#.css.scss)
+  * [_card.json](#_cardjson)
+  * [.json](#json)
+  * [.graph](#graph)
+  * [.graph && .js](#graph--js)
+  * [.js && .css.scss](#js--cssscss)
+  * [.css.scss](#cssscss)
 ---
   * [this.tutor](#this.tutor)
   * [Дополнительная информация](#Дополнительная-информация)
