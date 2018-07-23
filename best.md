@@ -1,125 +1,124 @@
 
-  <a name="arrays--from"></a><a name="4.4"></a>
-  - [4.4](#arrays--from) Для преобразования массиво-подобного объекта в массив используйте оператор расширения `...` вместо [`Array.from`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from).
+  BESTPRACTICE
+  ---
+  * [Spread](#Spread)
+  * [Деструктуризация](#Деструктуризация)
+  * [Оператор `**`](#Оператор-**)
+  * [Вспомогательные функции](#Вспомогательные-функции)
+  * [Анимации]($Анимации)
+  * [SCSS](#SCSS)
+    * [Перебор](#Перебор)
+    * [ShakePlates](#ShakePlates)
+  * Promise
 
-    ```javascript
-    const foo = document.querySelectorAll('.foo');
-
-    // хорошо
-    const nodes = Array.from(foo);
-
-    // отлично
-    const nodes = [...foo];
-    ```
-
-  <a name="arrays--mapping"></a><a name="4.5"></a>
-  - [4.5](#arrays--mapping) Используйте [Array.from](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from) вместо оператора расширения `...` для маппинга итерируемых объектов, это позволяет избежать создания промежуточного массива.
-
-    ```javascript
-    // плохо
-    const baz = [...foo].map(bar);
-
-    // хорошо
-    const baz = Array.from(foo, bar);
-    ```
-
-
-<a name="destructuring--object"></a><a name="5.1"></a>
-  - [5.1](#destructuring--object) При обращении к нескольким свойствам объекта используйте деструктуризацию объекта. eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
-
-    > Почему? Деструктуризация избавляет вас от создания временных переменных для этих свойств.
-
-    ```javascript
-    // плохо
-    function getFullName(user) {
-      const firstName = user.firstName;
-      const lastName = user.lastName;
-
-      return `${firstName} ${lastName}`;
-    }
-
-    // хорошо
-    function getFullName(user) {
-      const { firstName, lastName } = user;
-      return `${firstName} ${lastName}`;
-    }
-
-    // отлично
-    function getFullName({ firstName, lastName }) {
-      return `${firstName} ${lastName}`;
-    }
-    ```
-
-
-    <a name="destructuring--object-over-array"></a><a name="5.3"></a>
-Используйте деструктуризацию объекта для множества возвращаемых значений, но не делайте тоже самое с массивами.
-
-    > Почему? Вы cможете добавить новые свойства через некоторое время или изменить порядок без последствий.
-
-    ```javascript
-    // плохо
-    function processInput(input) {
-      // затем происходит чудо
-      return [left, right, top, bottom];
-    }
-
-    // при вызове нужно подумать о порядке возвращаемых данных
-    const [left, __, top] = processInput(input);
-
-    // хорошо
-    function processInput(input) {
-      // затем происходит чудо
-      return { left, right, top, bottom };
-    }
-
-    // при вызове выбираем только необходимые данные
-    const { left, top } = processInput(input);
-    ```
-
-<a name="functions--spread-vs-apply"></a><a name="7.14"></a>
-  - [7.14](#functions--spread-vs-apply) Отдавайте предпочтение использованию оператора расширения `...` при вызове вариативной функции. eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
-
-    > Почему? Это чище, вам не нужно предоставлять контекст, и не так просто составить `new` с `apply`.
-
-    ```javascript
-    // плохо
-    const x = [1, 2, 3, 4, 5];
-    console.log.apply(console, x);
-
-    // хорошо
-    const x = [1, 2, 3, 4, 5];
-    console.log(...x);
-
-    // плохо
-    new (Function.prototype.bind.apply(Date, [null, 2016, 8, 5]));
-
-    // хорошо
-    new Date(...[2016, 8, 5]);
-    ```
-
-
- <a name="es2016-properties--exponentiation-operator"></a><a name="12.3"></a>
-  - [12.3](#es2016-properties--exponentiation-operator) Используйте оператор `**` для возведения в степень. eslint: [`no-restricted-properties`](https://eslint.org/docs/rules/no-restricted-properties).
-
-    ```javascript
-    // плохо
-    const binary = Math.pow(2, 10);
-
-    // хорошо
-    const binary = 2 ** 10;
-    ```
+  # Spread
+  Для преобразования массиво-подобного объекта в массив используйте оператор расширения `...` вместо [`Array.from`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from).
 
 ```javascript
-// без покдлючения дополнительных библитек, можно вызывать вспомогательные функции находящиеся в FIXME:
+const foo = document.querySelectorAll('.foo');
 
-// узнать позиционирвание jq-объекта относительно другого
-$$.offset(host, element) // {top: 00px, left: 00px};
+// хорошо
+const nodes = Array.from(foo);
 
-// пример 
-$$.offset(this.scene, this.apple)
+// отлично
+const nodes = [...foo];
 ```
 
-Для анимаций лучше использовать Velocity.js (/component/vendor/velocityFIXME:?), чем jquery анимации. Velocity плавнее, быстрее, имеет бОльший функционал (анимация цвета, манипуляция с SVG, возврат промисов и прочее).
+Используйте [Array.from](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from) вместо оператора расширения `...` для маппинга итерируемых объектов, это позволяет избежать создания промежуточного массива.
+
+```javascript
+// плохо
+const baz = [...foo].map(bar);
+
+// хорошо
+const baz = Array.from(foo, bar);
+```
+
+Отдавайте предпочтение использованию оператора расширения `...` при вызове вариативной функции.
+Это чище, вам не нужно предоставлять контекст, и не так просто составить `new` с `apply`.
+> eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
+
+```javascript
+// плохо
+const x = [1, 2, 3, 4, 5];
+console.log.apply(console, x);
+
+// хорошо
+const x = [1, 2, 3, 4, 5];
+console.log(...x);
+
+// плохо
+new (Function.prototype.bind.apply(Date, [null, 2016, 8, 5]));
+
+// хорошо
+new Date(...[2016, 8, 5]);
+```
+
+# Деструктуризация
+
+При обращении к нескольким свойствам объекта используйте деструктуризацию объекта.
+Деструктуризация избавляет вас от создания временных переменных для этих свойств.
+>eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
+
+```javascript
+// плохо
+function getFullName(user) {
+  const firstName = user.firstName;
+  const lastName = user.lastName;
+
+  return `${firstName} ${lastName}`;
+}
+
+// хорошо
+function getFullName(user) {
+  const { firstName, lastName } = user;
+  return `${firstName} ${lastName}`;
+}
+
+// отлично
+function getFullName({ firstName, lastName }) {
+  return `${firstName} ${lastName}`;
+}
+```
+
+Используйте деструктуризацию объекта для множества возвращаемых значений, но не делайте тоже самое с массивами.Вы cможете добавить новые свойства через некоторое время или изменить порядок без последствий.
+
+```javascript
+// плохо
+function processInput(input) {
+  // затем происходит чудо
+  return [left, right, top, bottom];
+}
+
+// при вызове нужно подумать о порядке возвращаемых данных
+const [left, __, top] = processInput(input);
+
+// хорошо
+function processInput(input) {
+  // затем происходит чудо
+  return { left, right, top, bottom };
+}
+
+// при вызове выбираем только необходимые данные
+const { left, top } = processInput(input);
+```
+
+# Оператор `**`
+
+Используйте оператор `**` для возведения в степень. 
+>eslint: [`no-restricted-properties`](https://eslint.org/docs/rules/no-restricted-properties).
+
+```javascript
+// плохо
+const binary = Math.pow(2, 10);
+
+// хорошо
+const binary = 2 ** 10;
+```
+
+# Анимации
+
+Для анимаций лучше использовать Velocity.js (`/components/vendor/velocity/{версия}`), чем jquery анимации. Velocity плавнее, быстрее, имеет бОльший функционал (анимация цвета, манипуляция с SVG, возврат промисов и прочее).
 
 Ипользование:
 ```javascript
@@ -132,7 +131,20 @@ $.Velocity(el, { opacity: 1 }); // возвращает промис, удобн
 
 >` TODO: где то должно быть описание, то что свои функции заносим в $$`
 
-## Полезные функции при работе с анимациями для частых кейсов
+<!-- ## Полезные функции при работе с анимациями для частых кейсов -->
+# Вспомогательные функции
+
+```javascript
+// без покдлючения дополнительных библитек, можно вызывать вспомогательные функции находящиеся в FIXME:
+
+// узнать позиционирвание jq-объекта относительно другого
+$$.offset(host, element) // {top: 00px, left: 00px};
+
+// пример
+$$.offset(this.dom.scene, this.dom.apple)
+
+```
+Полезные функции:
 
 ```javascript
 // возвращает координаты центра элемента
@@ -176,7 +188,11 @@ this.obj.addClass('red').delay(1000).queue(() => {
 });
 ```
 
-```css
+# SCSS
+
+## Перебор
+
+```sass
 // при большом количестве спрайтов удобно пользоваться циклами
 $sprites: (
   ("fish-blue",ASSET_PATH('assets/img/fish-blue.svg'), 292px, 124px, 40px, 200px),
@@ -209,8 +225,9 @@ $sprites: (
 }
 ```
 
+## ShakePlates
 
-```scss
+```sass
 @at-root {
     @-webkit-keyframes shake {
       0% {
@@ -361,13 +378,13 @@ $sprites: (
 ```
 initDragger-->
   fork(1)-->
-      addShakePlate-->
-      drag(drag_auto|.plate)-->
-      animate_after_drag-->
-      join(1);
+    addShakePlate-->
+    drag(drag_auto|.plate)-->
+    animate_after_drag-->
+    join(1);
 ```
 
-```
+```javascript
 
 // addShakePlate
 $$.Script.prototype.addShakePlate = async function (cb) {
@@ -388,12 +405,5 @@ $$.Script.prototype.addShakePlate = async function (cb) {
     }, this.intervalDuration);
   }, 4000);
   cb();
-
-
-  // this.com.dragger.plates.forEach((plate) => {
-  //   if (!plate.hasClass('dragged')) {
-  //     plate.addClass('shake-anim');
-  //   }
-  // });
 };
 ```

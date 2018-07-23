@@ -108,15 +108,15 @@ content-{имя_проекта}/
 }
 ```
 
-Все возможные стратегии: 
+[Все возможные стратегии](https://uchiru2.atlassian.net/wiki/spaces/uchi/pages/1376953):
 ```json
 {
-  "stack",
-  "stack_adaptive", 
-  "stack_adaptive_with_variations",
-  "strategy_fix_mistakes",
-  "shuffle",
-  "increasing_stack"
+  "strategy": "stack",
+  "strategy": "stack_adaptive",
+  "strategy": "stack_adaptive_with_variations",
+  "strategy": "strategy_fix_mistakes",
+  "strategy": "shuffle",
+  "strategy": "increasing_stack"
 }
 ```
 
@@ -569,4 +569,5 @@ this.place.append(
 
 # Дополнительная информация
 
-[Более полная документация по `this.tutor`](https://github.com/uchiru/content-high-school/blob/master/doc/high_school/content/tutor.md)
+* [Более полная документация по `this.tutor`](https://github.com/uchiru/content-high-school/blob/master/doc/high_school/content/tutor.md)
+* [Стратегии генераций](https://uchiru2.atlassian.net/wiki/spaces/uchi/pages/1376953)
