@@ -1861,15 +1861,15 @@ console.warn(arr.some(isPositive)); // true, есть хоть одно поло
 
   Селектор | Оценка | Специфичность
   ------- | ------- | -------
-  * |  a=0 b=0 c=0  | 0 
-  li |  a=0 b=0 c=1  | 1 
-  ul li |  a=0 b=0 c=2  | 2 
-  ul ol+li |  a=0 b=0 c=3  | 3 
-  h1 + *[rel=up] |  a=0 b=1 c=1  | 11 
-  ul ol li.red |  a=0 b=1 c=3  | 13 
-  li.red.level |  a=0 b=2 c=1  | 21 
-  #x34y |  a=1 b=0 c=0  | 100 
-  #s12:not(p) |  a=1 b=0 c=1 | 101 
+  `*` |  a=0 b=0 c=0  | 0 
+  `li` |  a=0 b=0 c=1  | 1 
+  `ul` `li` |  a=0 b=0 c=2  | 2 
+  `ul` `ol+li` |  a=0 b=0 c=3  | 3 
+  `h1` `+` `*[rel=up]` |  a=0 b=1 c=1  | 11 
+  `ul` `ol` `li.red` |  a=0 b=1 c=3  | 13 
+  `li.red.level` |  a=0 b=2 c=1  | 21 
+  `#x34y` |  a=1 b=0 c=0  | 100 
+  `#s12:not(p)` |  a=1 b=0 c=1 | 101 
 
   ---
 
