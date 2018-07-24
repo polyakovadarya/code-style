@@ -1,6 +1,28 @@
 GIT(ZSH)
 ====
 
+[iTerm2](https://www.iterm2.com/)
+[Темы](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes)
+[Настройки](https://medium.com/@Clovis_app/configuration-of-a-beautiful-efficient-terminal-and-prompt-on-osx-in-7-minutes-827c29391961)
+
+После установки нужно добавить строчку в `~/.gitconfig`:
+```
+[oh-my-zsh]
+  hide-status = 1
+```
+
+
+
+
+
+
+
+
+
+
+
+# ALIASES
+
 |alias | column2|
 |------- | -------|
 |gup | 'git pull --rebase'|
