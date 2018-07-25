@@ -1,5 +1,5 @@
 
-<img src="img/js.jpg" alt="js" width="100%"/>
+<!-- <img src="img/js.jpg" alt="js" width="100%" height=""/> -->
 
 Авторы: [Георгий Грошев](https://github.com/eclegend), [Илья Назаров](https://github.com/ilich-x)
 
