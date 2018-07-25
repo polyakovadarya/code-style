@@ -645,7 +645,7 @@ module.exports = {
 
     // this option enforces minimum and maximum identifier lengths
     // (variable names, property names etc.)
-    'id-length': ["error", { "min": 3,"exceptions":["i","j","x","y","cb","el"] }],
+    'id-length': ["error", { "min": 3,"exceptions":["MQ","mq","i","j","x","y","cb","el"] }],
 
     // this option sets a specific tab width for your code
     // http://eslint.org/docs/rules/indent
