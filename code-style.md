@@ -36,7 +36,8 @@
 </details>
 
 <details open="JavaScript"><summary>SCSS</summary>
-
+ 
+---
 - [Миксины](#scss)
 - [Отступы](#Отступы)
 - [Вложенность](#Вложенность)
