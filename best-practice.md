@@ -8,8 +8,8 @@
   * [Анимации](#Анимации)
   * [SCSS](#scss)
     * [Перебор](#Перебор)
-    * [ShakePlates](#shakeplates)
-  * Promise
+  * [ShakePlates](#shakeplates)
+  * [Sticky](#sticky)
 
   # Оператор spread
   Для преобразования массиво-подобного объекта в массив используйте оператор расширения `...` вместо [`Array.from`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from).
@@ -118,27 +118,65 @@ const binary = 2 ** 10;
 
 # Анимации
 
-Для анимаций лучше использовать Velocity.js (`/components/vendor/velocity/{версия}`), чем jquery анимации. Velocity плавнее, быстрее, имеет бОльший функционал (анимация цвета, манипуляция с SVG, возврат промисов и прочее).
+
+
+Для анимаций лучше использовать Velocity.js (`/components/vendor/velocity/{версия}`), чем jquery анимации. Velocity плавнее, быстрее, имеет больший функционал (анимация цвета, манипуляция с SVG, возврат промисов и прочее).
 
 Ипользование:
 ```javascript
 $element.velocity({ top: 50 }, 1000, cb); // jq-style
 
 $.Velocity(el, { opacity: 1 }); // возвращает промис, удобно использовать в последовательных анимациях ипользуя `async await` или чейн промисов `Promise().then()`
-
 ```
-Полная документация с примерами на [Velocity](http://velocityjs.org/).
+
+```javascript
+ // Цепочки нативных промисов
+ Promise.resolve()
+  .then(()=>{ ... })
+  .then(()=>{ ... })
+  .then(()=>{ ... });
+// Массив Native-промисов
+  Promise.all([]);
+// jQuery
+  $.when($smth1).then(()=>{
+    $.when($smth2).then(()=>{
+      $.when($smth3).done(cb);
+    });
+  });
+// Массив jQuery-промисов
+  const arr = [
+    $smth1.promise(),
+    $smth2.promise(),
+    $smth3.promise(),
+    $smth4.promise(),
+  ];
+  $.when.apply($, arr).done(cb);
+//  или
+  $.when.apply($, [
+    $smth1.promise(),
+    $smth2.promise(),
+    $smth3.promise(),
+    $smth4.promise(),
+  ]).done(cb);
+```
+
+* Полная документация с примерами на [Velocity](http://velocityjs.org/).
+* [Promises](https://learn.javascript.ru/promise)
 
 # Async/Await
 
 `Async/Await` - это долгожданная функция `JavaScript`, которая делает работу с асинхронными функциями более приятной и понятной. Он построен поверх `Promises` и совместим со всеми существующими `API`-интерфейсами на основе `Promise`.
+
 ```javascript
 // пример
 $$.Script.prototype.animationTime = async function(cb) {
-  await this.com.button.animateSuccess({ duration: 1000, clearAuto: true });
+  // await хорошо справляется с нативными и jquery промисами
+  // анимация компонента Atom Button
+  await this.com.button.animateSuccess({ duration: 1000, clearAuto: true }); // animateSuccess вернет jquery-promise
+  await $element1.velocity({ top: 50 }, 1000).promise(); // вернет jquery-promise
   await Promise.all([
     new Promise(resolve => {
-      $element1.velocity({ top: 50 }, 1000, resolve),
+      $element1.velocity({ top: 50 }, 1000, resolve), // native promise
     }),
     new Promise(resolve => {
       $element2.velocity({ top: 50 }, 1000, resolve),
@@ -146,26 +184,26 @@ $$.Script.prototype.animationTime = async function(cb) {
     new Promise(resolve => {
       $element3.velocity({ top: 50 }, 1000, resolve),
     }),
-  ])
+  ]); // Promise.all([]) дождется завершения всех промисов в массиве
   cb();
 };
 
 ```
 
-
->` TODO: где то должно быть описание, то что свои функции заносим в $$`
-
-<!-- ## Полезные функции при работе с анимациями для частых кейсов -->
 # Вспомогательные функции
+
+Вспомогательные функции должны быть в `$$` и выноситься в отдельный файл с названием `helpers.js`. 
+`$$` - это условное обозначение неймспейса для карточки и скрипта  и при компиляции преобразуется в `Card.ScriptID`.
 
 Без покдлючения дополнительных библитек, можно вызывать вспомогательные функции находящиеся в `"/components/system/kernel/{версия}"`
 
 ```javascript
 // узнать позиционирвание jq-объекта относительно другого
-$$.offset(host, element) // {top: 00px, left: 00px};
+$$.offset(host, element); // {top: 00, left: 00};
 
 // пример
-$$.offset(this.dom.scene, this.dom.apple)
+$$.offset(this.dom.scene, this.dom.apple); // вернет объект {top: 20,left: 40} 
+// 20 и 40 числа для примера
 ```
 
 Полезные функции:
@@ -250,7 +288,7 @@ $sprites: (
 ```
 
 ## ShakePlates
-[Пример в CMS](https://math2-cms.uchi.ru/ru/cards/6136?chunk=3&sound=on_demand&version=116934)
+### [Пример в CMS](https://math2-cms.uchi.ru/ru/cards/6136?chunk=3&sound=on_demand&version=116934)
 ```sass
 
 .shake {
@@ -448,4 +486,49 @@ $$.Script.prototype.addShakePlate = function (cb) {
   }, 4000);
   cb();
 };
+```
+
+# Sticky
+
+```sass
+& {
+  @include stickyfill($class: "sticky");
+
+  .header {
+    position: sticky;
+    padding-top: 14px;
+    padding-bottom: 20px;
+    z-index: 30;
+    background-color: #fff;
+
+    &.shadow{
+      box-shadow: 0 5px 8px 0px rgba(0, 0, 0, 0.14);
+    }
+  }
+}
+```
+
+```json
+"require": [
+  ...
+  "/components/vendor/stickyfill/2.0.2",
+],
+```
+
+```javascript
+this.dom = {
+  header: $.div('header sticky'),
+  title: $.div('title').html(this.tutor.t('title')),
+};
+
+// Render
+this.place.append(
+  this.dom.header.append(
+    this.dom.title,
+  ),
+);
+
+Stickyfill.add(this.dom.header);
+//...
+this.dom.header.addClass('shadow');
 ```
