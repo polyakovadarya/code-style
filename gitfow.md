@@ -98,7 +98,7 @@ git pull --rebase
 
 PR — Pull Request. В качестве ревьювера назначаем ответственное по релизу лицо (тимлид или кто-то другой). Можно добавить комментарии.
 
-![PR](img/pr.png)
+![PR](img/gitflow/pr.png)
 
 ### 5. Review
 
@@ -106,17 +106,17 @@ PR — Pull Request. В качестве ревьювера назначаем �
 
 - **Changes requested**: вносим изменения и уведомляем ревьювера об окончании.
 
-    ![Approved](img/changes-requested.png)
+    ![Approved](img/gitflow/changes-requested.png)
 
 - **Approved**: идём дальше.
 
-    ![Approved](img/approved.png)
+    ![Approved](img/gitflow/approved.png)
 
 ### 6. Проверяем наличие конфликтов на GitHub-е
 
 - Если есть конфликты: исправляем их.
 
-  ![Check conflicts 0](img/check-conflicts-0.png)
+  ![Check conflicts 0](img/gitflow/check-conflicts-0.png)
 
   1. Мержим master в нашу ветку:
 
@@ -146,11 +146,11 @@ PR — Pull Request. В качестве ревьювера назначаем �
       ```
 - Если нет конфликтов: идём дальше.
 
-    ![Check conflicts 1](img/check-conflicts-1.png)
+    ![Check conflicts 1](img/gitflow/check-conflicts-1.png)
 
 ### 7. Мержим PR на GitHub-е
 
-![Check conflicts 1](img/merge.png)
+![Check conflicts 1](img/gitflow/merge.png)
 
 ### 8. Удаляем ветку на GitHub-е
 

@@ -1,0 +1,21 @@
+#!/bin/bash
+set -e
+
+REPOS=$(cat <<-END
+  content-demos
+  content-english-language
+  content-games
+  content-happy-numbers
+  content-high-school
+  content-international-content
+  content-kindergarten
+  content-olympiad
+  content-primary-school
+  content-russian-language
+  content-world
+END
+)
+
+for repo in $REPOS; do
+  echo $repo;
+done

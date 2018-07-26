@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e
+
+DIR=$(cd `dirname $0` && pwd)
+
+cmd=$1
+
+if [ "$cmd" == "" ]; then
+  echo 
+  echo -e "./custom/update_doc <cmd>"
+  echo
+  echo Ex:
+  echo -e "  ./custom/update_doc 'git checkout master && git pull --rebase && ./clean_env'"
+  echo
+  exit
+fi
+
+REPOS=$($DIR/list_repos)
+
+echo [CMD]: $cmd
+
+for repo in $REPOS; do
+  echo "$repo ..."
+  pushd ../$repo
+    eval "$cmd"
+  popd
+  echo "$repo ... Done"
+done

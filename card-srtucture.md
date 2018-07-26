@@ -169,7 +169,7 @@ content-{имя_проекта}/
 ```
 Файлы изображений, например, должны храниться в папке `assets/img` рядом с вашей каточкой.
 
-![assets-img](img/assets.png)
+![assets-img](img/card-structure/assets.png)
 
 И тогда `"/{пути_для_кастомных_библиотек_либо_ваших_файлов}",` будет выглядеть как `"assets/img",`.
 
@@ -341,7 +341,7 @@ $$.Script.prototype.deinit = function(cb) {
 ---
 **`this.tutor.play_button()` - может отличаться в зависимости от проекта**
 
-![play_button](img/play_button.png)
+![play_button](img/card-structure/play_button.png)
 
 ---
 ```
